@@ -63,7 +63,7 @@ const CTextInput = ({label='', isMarginTop=false}) => {
 
         <Text style={{fontSize:13, color:'#2C2C2C', lineHeight:21}}>{label.toUpperCase()}</Text>
 
-        <TextInput placeholder='Enter...' placeholderTextColor='#6B7B8B' style={{height:50, paddingLeft:15, fontSize:16, marginTop:10, borderWidth:1, borderColor:'#DBE2E8', borderRadius:2}} />
+        <TextInput placeholder='Enter...' placeholderTextColor={{fontSize:16, color:'#6B7B8B'}} style={{height:50, paddingLeft:15, marginTop:10, borderWidth:1, borderColor:'#DBE2E8', borderRadius:2}} />
 
     </View>
 };
