@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {Text, View, SafeAreaView, TouchableOpacity, StatusBar} from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
+import {Text, View, TouchableOpacity, StatusBar, KeyboardAvoidingView} from 'react-native';
+import { TextInput, ScrollView } from 'react-native-gesture-handler';
+import { CButton } from '../Common/Selector';
 
 
 /**
@@ -8,15 +9,33 @@ import { TextInput } from 'react-native-gesture-handler';
  *          navigation,
  * }
  * 
- * state:{}
+ * state:{
+ *          email:'',
+ *          password:''
+ * 
+ * }
  */
 export default class LoginScreen extends Component {
+
+
+    constructor(props){
+        super(props);
+
+        this.state = {
+
+            email:'',
+            password:''
+
+        };
+    }
     
-  
+
     /**
      * 
      */
     render(){
+
+        const {email, password} = this.state;
 
         const {navigation} = this.props;
         
@@ -60,17 +79,51 @@ export default class LoginScreen extends Component {
 
                 </View>
 
-                <View style={{flex:884, backgroundColor:'#00538B', justifyContent: 'center', alignItems: 'center'}}>
+                <View style={{flex:884, backgroundColor:'#00538B', justifyContent:'center', alignItems: 'center'}}>
 
-                    <View style={{width:484, padding: 50, backgroundColor:'#FFF', borderRadius: 8}}>
+                  {/* <KeyboardAvoidingView behavior='padding' enabled style={{flex:1}} > */}
+                    
+                      {/* <ScrollView contentContainerStyle={{ alignItems: 'center', backgroundColor:'transparent'}} */}
+                          {/* showsVerticalScrollIndicator={false}> */}
 
-                        <CTextInput label='User ID' />
+                          {/* <View style={{height:'50%'}} /> */}
 
-                        <CTextInput label='Password' isMarginTop />
+                          <View style={{width:484, padding: 50, backgroundColor:'#FFF', borderRadius: 8}}>
 
-                        <CButton onPressLogin={()=>navigation.navigate('main')} />
+                              <Text style={{fontSize:13, color:'#2C2C2C', lineHeight:21}}>USER ID</Text>
 
-                    </View>
+                              <TextInput 
+                                  style={{height:50, fontSize:16, paddingLeft:15, marginTop:10, borderWidth:1, borderColor:'#DBE2E8', borderRadius:2}} 
+                                  placeholder='Enter...' 
+                                  placeholderTextColor='#6B7B8B' 
+                                  textContentType={'emailAddress'}
+                                  keyboardType={'email-address'}
+                                  returnKeyType={'next'}
+                                  value={email}
+                                  onChangeText={email => this.setState({ email })}
+                                  onSubmitEditing={() => { this.passwordTextInput.focus(); }}
+                              />
+
+                              <Text style={{fontSize:13, color:'#2C2C2C', lineHeight:21, marginTop:30}}>PASSWORD</Text>
+
+                              <TextInput 
+                                  ref={(input) => { this.passwordTextInput = input; }}
+                                  style={{height:50, fontSize:16, paddingLeft:15, marginTop:10, borderWidth:1, borderColor:'#DBE2E8', borderRadius:2}} 
+                                  placeholder='&#8226;&#8226;&#8226;&#8226;&#8226;' 
+                                  placeholderTextColor='#6B7B8B'
+                                  textContentType={'password'}
+                                  returnKeyType={'done'}
+                                  value={password}
+                                  onChangeText={password => this.setState({ password })} 
+                              />
+
+                              <CButton buttonName='Sign in' onPress={()=>navigation.navigate('main')} />
+
+                          </View>
+
+                      {/* </ScrollView> */}
+                  
+                  {/* </KeyboardAvoidingView> */}
 
                 </View>
             
@@ -86,7 +139,7 @@ export default class LoginScreen extends Component {
  * @param label
  * @param isMarginTopLink
  */
-const CDataLink = ({label='', isMarginTopLink=false, dataLink}) => {
+const CDataLink = ({label='', isMarginTopLink=false, dataLink=''}) => {
 
     return <View style={{marginTop:isMarginTopLink?20:null}}>
 
@@ -95,33 +148,4 @@ const CDataLink = ({label='', isMarginTopLink=false, dataLink}) => {
         <Text style={{fontSize:16, color:'#2C2C2C', marginTop:3}}>{dataLink||'N/A'}</Text>
 
     </View>
-};
-
-
-/**
- * @param label
- * @param isMarginTop
- */
-const CTextInput = ({label='', isMarginTop=false}) => {
-
-    return <View style={{marginTop:isMarginTop?30:null}}>
-
-        <Text style={{fontSize:13, color:'#2C2C2C', lineHeight:21}}>{label.toUpperCase()}</Text>
-
-        <TextInput placeholder='Enter...' placeholderTextColor='#6B7B8B' style={{height:50, fontSize:16, paddingLeft:15, marginTop:10, borderWidth:1, borderColor:'#DBE2E8', borderRadius:2}} />
-
-    </View>
-};
-
-
-/**
- * @param onPressLogin
- */
-const CButton = ({onPressLogin=()=>{}}) => {
-
-    return <TouchableOpacity onPress={onPressLogin} style={{height:50, backgroundColor:'#00538B', marginTop:30, justifyContent: 'center', alignItems: 'center', borderRadius:25}}>
-
-          <Text style={{fontSize:16, color:'#FFF'}}>SIGN IN</Text>
-
-    </TouchableOpacity>
 };
