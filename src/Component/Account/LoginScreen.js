@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Text, View, TouchableOpacity, StatusBar, KeyboardAvoidingView} from 'react-native';
 import { TextInput, ScrollView } from 'react-native-gesture-handler';
 import { CButton } from '../Common/Selector';
+import R from '../R';
 
 
 /**
@@ -88,7 +89,7 @@ export default class LoginScreen extends Component {
 
                           {/* <View style={{height:'50%'}} /> */}
 
-                          <View style={{width:484, padding: 50, backgroundColor:'#FFF', borderRadius: 8}}>
+                          <View style={{width:484, padding: 50, backgroundColor:'#FFF', borderRadius: 8, ...R.Style.shadow}}>
 
                               <Text style={{fontSize:13, color:'#2C2C2C', lineHeight:21}}>USER ID</Text>
 
@@ -145,7 +146,7 @@ const CDataLink = ({label='', isMarginTopLink=false, dataLink=''}) => {
 
         <Text numberOfLines={1} style={{fontSize:13, color:'#6B7B8B'}}>{label}</Text>
 
-        <Text style={{fontSize:16, color:'#2C2C2C', marginTop:3}}>{dataLink||'N/A'}</Text>
+        <Text style={{fontSize:16, color:'#2C2C2C', fontWeight:'600', marginTop:3}}>{dataLink||'N/A'}</Text>
 
     </View>
 };
