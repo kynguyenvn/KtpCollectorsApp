@@ -5,6 +5,8 @@ import UColor from './UColor';
 import MainScreen from '../Component/Main/MainScreen';
 import {Header} from '../Component/Common/Header';
 
+
+
 const Stack = createStackNavigator();
 // export const navigationRef = React.createRef();
 
@@ -50,7 +52,10 @@ export default class UNavigation {
           name="main"
           component={MainScreen}
           options={{
-            headerTitle: (props) => <Header {...props} />,
+            headerStyle: {
+              backgroundColor:'#F3F5F7'
+            },
+            header: (props) => <Header {...props} />,
           }}
         />
       </Stack.Navigator>
