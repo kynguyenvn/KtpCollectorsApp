@@ -3,6 +3,7 @@ import {Text, View, TouchableOpacity, StatusBar, KeyboardAvoidingView} from 'rea
 import { TextInput, ScrollView } from 'react-native-gesture-handler';
 import { CButton } from '../Common/Selector';
 import R from '../R';
+import {AuthContext} from '../../App';
 
 
 /**
@@ -16,29 +17,19 @@ import R from '../R';
  * 
  * }
  */
-export default class LoginScreen extends Component {
+export function LoginScreen() {
 
+const [email, setEmail] = React.useState('');
+const [password, setPassword] = React.useState('');
+const {signIn} = React.useContext(AuthContext);
 
-    constructor(props){
-        super(props);
-
-        this.state = {
-
-            email:'',
-            password:''
-
-        };
-    }
-    
 
     /**
      * 
      */
-    render(){
+    
 
-        const {email, password} = this.state;
-
-        const {navigation} = this.props;
+       
         
         return (
 
@@ -101,7 +92,7 @@ export default class LoginScreen extends Component {
                                   keyboardType={'email-address'}
                                   returnKeyType={'next'}
                                   value={email}
-                                  onChangeText={email => this.setState({ email })}
+                                  onChangeText={email => setEmail(email)}
                                   onSubmitEditing={() => { this.passwordTextInput.focus(); }}
                               />
 
@@ -115,10 +106,10 @@ export default class LoginScreen extends Component {
                                   textContentType={'password'}
                                   returnKeyType={'done'}
                                   value={password}
-                                  onChangeText={password => this.setState({ password })} 
+                                  onChangeText={password => setPassword(password)} 
                               />
 
-                              <CButton buttonName='Sign in' onPress={()=>navigation.navigate('main')} />
+                              <CButton buttonName='Sign in' onPress={()=>signIn()} />
 
                           </View>
 
@@ -132,7 +123,6 @@ export default class LoginScreen extends Component {
 
             </>
         );
-    }
 }
 
 
