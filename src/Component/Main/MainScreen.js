@@ -7,6 +7,8 @@ import { GoodUnitAndReject } from './GoodUnitAndReject';
 import { UnPlannedDowntime } from '../UPT/UnPlannedDowntime';
 import {PlannedDowntime} from '../PDT/PlannedDowntime';
 import {Changeover} from '../Changeover/Changeover';
+import { Footer } from '../Common/Footer';
+import { AlertScreen } from '../Common/AlertScreen';
 
 
 /**
@@ -20,6 +22,13 @@ export default class MainScreen extends Component {
         super(props);
     }
 
+
+    /**
+     *
+     */
+    goToDefault = () => { this.scrollableTabView.goToPage(0);};
+
+
     /**
      * 
      */
@@ -30,30 +39,41 @@ export default class MainScreen extends Component {
             <View style={{flex:1}}>
             
                 <ScrollableTabView
+                    ref={(ref) => { this.scrollableTabView = ref; }}
                     tabBarPosition='top'
                     initialPage={0}
                     locked
                     prerenderingSiblingsNumber={3}
+
                     renderTabBar={() => <TabBar />}
                 >
 
                     <GoodUnitAndReject
-                        tabLabel={''}
+                        tabLabel={'Default'.toUpperCase()}
                     />
 
                     <UnPlannedDowntime
                         tabLabel={'Unplanned D/T'.toUpperCase()}
+                        goBack={this.goToDefault}
                     />
 
                     <Changeover
                         tabLabel={'Changeover'.toUpperCase()}
+                        goBack={this.goToDefault}
                     />
 
                     <PlannedDowntime
                         tabLabel={'Planned D/T'.toUpperCase()}
+                        goBack={this.goToDefault}
+                    />
+                    
+                    <AlertScreen
+                        tabLabel={'Alert'.toUpperCase()}
                     />
 
                 </ScrollableTabView>
+
+                <Footer />
 
             </View>
 
