@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View} from 'react-native';
+import { CGeneral, CDetails, CSmallBox } from '../Common/Selector';
 
 
 /**
@@ -14,15 +15,21 @@ class Changeover extends Component {
 
         return(
 
-            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:'#FFF', paddingHorizontal:50}}>
+            <CGeneral>
 
-                <Text>Changeover</Text>
+                <View style={{height:150}} />
 
-                <TouchableOpacity activeOpacity={0.8} onPress={goBack}>
-                    <Text>Go back Default</Text>
-                </TouchableOpacity>
+                <CDetails title='Changeover' goBack={goBack}>
 
-            </View>
+                    <CSmallBox />
+                    
+                    <CSmallBox isBorderLeftWidth />
+                    
+                    <CSmallBox isBorderLeftWidth />
+
+                </CDetails>
+
+            </CGeneral>
         );
     }
 }
