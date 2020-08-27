@@ -34,6 +34,8 @@ export default class MainScreen extends Component {
      */
     render(){
 
+        const {navigation} = this.props;
+
         return(
             
             <View style={{flex:1}}>
@@ -43,6 +45,7 @@ export default class MainScreen extends Component {
                     tabBarPosition='top'
                     initialPage={0}
                     locked
+                    scrollWithoutAnimation
                     prerenderingSiblingsNumber={3}
 
                     renderTabBar={() => <TabBar />}
@@ -50,6 +53,7 @@ export default class MainScreen extends Component {
 
                     <GoodUnitAndReject
                         tabLabel={'Default'.toUpperCase()}
+                        navigation={navigation}
                     />
 
                     <UnPlannedDowntime

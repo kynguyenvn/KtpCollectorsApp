@@ -21,7 +21,7 @@ const CDetails = (props) => {
 
     const {goBack=()=>{}, title=''} = props;
 
-    return <View style={{flex:1, backgroundColor:'#F3F5F7', borderWidth:1, borderColor:'#CAD3DB', borderRadius:3}}>
+    return <View style={{flex:2, backgroundColor:'#F3F5F7', borderWidth:1, borderColor:'#CAD3DB', borderRadius:3}}>
 
         <View style={{flex:123, flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
             

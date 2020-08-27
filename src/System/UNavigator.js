@@ -4,6 +4,7 @@ import {LoginScreen} from '../Component/Account/LoginScreen';
 import UColor from './UColor';
 import MainScreen from '../Component/Main/MainScreen';
 import {Header} from '../Component/Common/Header';
+import { ModalScreen } from '../Component/Common/ModalScreen';
 
 
 
@@ -22,6 +23,7 @@ export default class UNavigation {
   static AccountStack = () => {
     return (
       <Stack.Navigator
+        animationEnabled
         screenOptions={{
           headerShown: false,
           animationEnabled: false,
@@ -37,8 +39,24 @@ export default class UNavigation {
   static MainStack = () => {
     return (
       <Stack.Navigator
+        mode='modal'
         screenOptions={{
           cardStyle: {backgroundColor: 'transparent'},
+          cardStyleInterpolator: ({ current: { progress } }) => ({
+            cardStyle: {
+              opacity: progress.interpolate({
+                inputRange: [0, 0.5, 0.9, 1],
+                outputRange: [0, 0.5, 0.9, 1],
+              }),
+            },
+            overlayStyle: {
+              opacity: progress.interpolate({
+                inputRange: [0, 1],
+                outputRange: [0, 0.5],
+                extrapolate: 'clamp',
+              }),
+            },
+          }),
           cardOverlayEnabled: true,
           headerHideShadow: true,
           headerStyle: {
@@ -51,6 +69,16 @@ export default class UNavigation {
         <Stack.Screen
           name="main"
           component={MainScreen}
+          options={{
+            headerStyle: {
+              backgroundColor:'#F3F5F7'
+            },
+            header: (props) => <Header {...props} />,
+          }}
+        />
+        <Stack.Screen
+          name="modal"
+          component={ModalScreen}
           options={{
             headerStyle: {
               backgroundColor:'#F3F5F7'

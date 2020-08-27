@@ -17,7 +17,7 @@ class PlannedDowntime extends Component {
 
             <CGeneral>
 
-                <View style={{height:150}} />
+                <View style={{flex:1}} />
 
                 <CDetails title='PlannedDowntime' goBack={goBack}>
 
