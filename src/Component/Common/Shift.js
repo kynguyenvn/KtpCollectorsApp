@@ -3,7 +3,7 @@ import { View} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 import R from '../R';
-import {ProgressBar} from '../Main/ProgressBar';
+import {ProgressBar} from '../Main/MainElements';
 
 const SHIFT_STATUS = ['success', 'fail', 'success', 'success', 'fail', 'onGoing', 'upComing', 'upComing', 'upComing', 'upComing', 'upComing','upComing'];
 
@@ -33,6 +33,7 @@ class Shift extends Component {
 
     return (
      <ProgressBar
+     style={{ marginTop: 40, marginBottom: 20}}
      name={'Shift'}
      currentAmount={'220'}
      targetAmount={'4080'}
@@ -63,16 +64,16 @@ const HourBars = ({hourStatus, i}) => {
 
   switch (hourStatus) {
     case 'success':
-      hourBar = <HourBar key={index} status={'success'} position={position} />;
+      hourBar = <HourBar index={index} key={index} status={'success'} position={position} />;
       break;
     case 'fail':
-      hourBar = <HourBar key={index} status={'fail'} position={position} />;
+      hourBar = <HourBar index={index} key={index} status={'fail'} position={position} />;
       break;
     case 'onGoing':
-      hourBar = <HourBar key={index} status={'onGoing'} position={position} />;
+      hourBar = <HourBar index={index} key={index} status={'onGoing'} position={position} />;
       break;
     case 'upComing':
-      hourBar = <HourBar key={index} status={'upComing'} position={position} />;
+      hourBar = <HourBar index={index} key={index} status={'upComing'} position={position} />;
       break;
     default:
       break;
@@ -84,9 +85,9 @@ const HourBars = ({hourStatus, i}) => {
 /**
  * @param status
  * @param position
- * @param key
+ * @param index
  */
-const HourBar = ({status, position, key}) => {
+const HourBar = ({status, position, index}) => {
   let color;
   let icon;
   let colorBorder;
@@ -114,7 +115,7 @@ const HourBar = ({status, position, key}) => {
   }
   return (
     <LinearGradient
-      key={key}
+      key={index}
       colors={color}
       style={{ flex: 1,height: 30,justifyContent: 'center',alignItems: 'center',borderColor: colorBorder,borderWidth: 0.5,borderBottomLeftRadius: position === 'first' ? 20 : null, borderTopLeftRadius: position === 'first' ? 20 : null, borderBottomRightRadius: (position === 'last' || status === 'onGoing') ? 20 : null,borderTopRightRadius: (position === 'last' || status === 'onGoing') ? 20 : null,}}>
       <Ionicons

@@ -5,6 +5,7 @@ import { CGeneral } from '../Common/Selector';
 import {Hourly} from '../Common/Hourly';
 import {Shift} from '../Common/Shift';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {DigitsCard} from './MainElements';
 
 
 
@@ -99,15 +100,7 @@ const GoodUnitAndRejectItem = (props) => {
 
         </View>
 
-        <View style={{flex:1, flexDirection:'row', justifyContent:'space-between', marginTop:20}}>
-
-            <View style={{flex:1, backgroundColor:'#FFF', justifyContent:'center', alignItems:'center', borderWidth:1, borderColor:'#DBE2E8', borderRadius:3}} />
-
-            <View style={{flex:1, backgroundColor:'#FFF', justifyContent:'center', alignItems:'center', borderWidth:1, borderColor:'#DBE2E8', borderRadius:3, marginLeft:15}} />
-
-            <View style={{flex:1, backgroundColor:'#FFF', justifyContent:'center', alignItems:'center', borderWidth:1, borderColor:'#DBE2E8', borderRadius:3, marginLeft:15}} />
-
-        </View>
+        <DigitsCard unitCount={20000}/>
 
         <View style={{flexDirection:'row', height:50, marginTop:20, paddingHorizontal:isPaddingHorizontal?56:null}}>
             {props.children}

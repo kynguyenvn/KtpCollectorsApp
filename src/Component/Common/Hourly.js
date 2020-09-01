@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text} from 'react-native';
-import {ProgressBar} from '../Main/ProgressBar';
+import {ProgressBar} from '../Main/MainElements';
 import R from '../R';
 
 /**
@@ -25,6 +25,7 @@ class Hourly extends Component {
 
         return(
        <ProgressBar
+       style={{marginBottom: 40, marginTop: 20}}
        name={'Hourly'}
        currentAmount={'12'}
        targetAmount={'220'}
