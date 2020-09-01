@@ -4,7 +4,7 @@ import {LoginScreen} from '../Component/Account/LoginScreen';
 import UColor from './UColor';
 import MainScreen from '../Component/Main/MainScreen';
 import {Header} from '../Component/Common/Header';
-import { ModalScreen } from '../Component/Common/ModalScreen';
+import {NumpadScreen} from '../Component/Main/NumpadScreen';
 
 
 
@@ -77,8 +77,8 @@ export default class UNavigation {
           }}
         />
         <Stack.Screen
-          name="modal"
-          component={ModalScreen}
+          name="numpad"
+          component={NumpadScreen}
           options={{
             headerStyle: {
               backgroundColor:'#F3F5F7'

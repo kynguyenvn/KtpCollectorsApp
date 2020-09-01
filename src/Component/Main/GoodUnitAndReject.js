@@ -20,9 +20,12 @@ class GoodUnitAndReject extends Component {
         return(
 
             <CGeneral>
+                
                 <View style={{flex:1}}>
-                  <Hourly minuteMark={this.props.minuteMark}  />
-                  <Shift shift={this.props.shift} currentTime={this.props.currentTime} />
+                    
+                    <Shift shift={this.props.shift} currentTime={this.props.currentTime} />
+                    
+                    <Hourly minuteMark={this.props.minuteMark}  />
 
                 </View>
 
@@ -32,7 +35,7 @@ class GoodUnitAndReject extends Component {
 
                         <View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
 
-                            <TouchableOpacity activeOpacity={0.8} onPress={()=>navigation.navigate('modal')} style={{height:40, width:40, borderRadius:20, backgroundColor:'#FFF', borderWidth:1, borderColor:'#DBE2E8', ...R.Style.shadowIcon}} />
+                            <TouchableOpacity activeOpacity={0.8} onPress={()=>navigation.navigate('numpad')} style={{height:40, width:40, borderRadius:20, backgroundColor:'#FFF', borderWidth:1, borderColor:'#DBE2E8', ...R.Style.shadowIcon}} />
 
                             <Text style={{fontSize:22, color:'#3F4246', fontWeight:'700', lineHeight:40}}>GOOD</Text>
 
