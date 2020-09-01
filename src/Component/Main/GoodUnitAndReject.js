@@ -33,16 +33,22 @@ class GoodUnitAndReject extends Component {
 
                 <View style={{flex:2, flexDirection:'row'}}>
 
-                    <GoodUnitAndRejectItem title='Good' isButtonNetwork onPressNumpad={()=>navigation.navigate('numpad')}>
-
+                    <GoodUnitAndRejectItem 
+                        title='Good' 
+                        isButtonNetwork 
+                        onPressNumpad={()=>navigation.navigate('numpad')}
+                    >
                         <DigitsCard unitCount={150}/>
 
                     </GoodUnitAndRejectItem>
 
                     <View style={{width:30}} />
 
-                    <GoodUnitAndRejectItem title='Reject' backgroundColor='#FA6348' isReject>
-
+                    <GoodUnitAndRejectItem 
+                        title='Reject' 
+                        backgroundColor='#FA6348' 
+                        isReject
+                    >
                         <DigitsCard unitCount={3}/>
 
                     </GoodUnitAndRejectItem>
@@ -59,6 +65,8 @@ class GoodUnitAndReject extends Component {
  * @param title
  * @param isReject
  * @param onPressNumpad
+ * @param isButtonNetwork
+ * @param backgroundColor
  */
 const GoodUnitAndRejectItem = (props) => {
 

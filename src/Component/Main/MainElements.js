@@ -25,7 +25,7 @@ const DigitsCard = ({unitCount}) => {
 
         {getDigits().map((item, index)=>(
         
-            <View key={index} style={{flex:1, marginHorizontal: 5, backgroundColor:'#FFF', justifyContent:'center', alignItems:'center', borderWidth:1, borderColor:'#DBE2E8', borderRadius:3}}>
+            <View key={index} style={{flex:1, marginLeft:index===0?null:10, backgroundColor:'#FFF', justifyContent:'center', alignItems:'center', borderWidth:1, borderColor:'#DBE2E8', borderRadius:3}}>
                
                 <Text style={{fontSize: 80, color: R.C.numberColor}}>{item}</Text>
             
