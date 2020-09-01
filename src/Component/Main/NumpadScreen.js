@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, TouchableOpacity, TextInput} from 'react-native';
 import R from '../R';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
 
@@ -41,7 +42,7 @@ class NumpadScreen extends Component {
                     
                         <TouchableOpacity activeOpacity={0.8} onPress={()=>navigation.goBack()} style={{height:60, width:66, justifyContent:'center', alignItems:'center'}}>
                             
-                            <Text style={{fontSize:20, color:'#FFF', fontWeight:'700'}}>X</Text>
+                            <Ionicons name='close' style={{fontSize:28, color:'#FFFFFF'}} />
                         
                         </TouchableOpacity>
 

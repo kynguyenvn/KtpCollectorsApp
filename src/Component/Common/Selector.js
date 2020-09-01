@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
 import R from '../R';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 /**
  * props:{}
@@ -14,8 +15,8 @@ const CGeneral = (props) => {
 
 
 /**
- * @param props
  * @param title
+ * @param goBack
  */
 const CDetails = (props) => {
 
@@ -29,7 +30,7 @@ const CDetails = (props) => {
             
             <TouchableOpacity activeOpacity={0.8} onPress={goBack} style={{height:40, width:40, borderRadius:20, justifyContent:'center', alignItems:'center', backgroundColor:'#FFF', marginRight:30, borderWidth:1, borderColor:'#DBE2E8', ...R.Style.shadowIcon}}>
                 
-                <Text>X</Text>
+                <Ionicons name='close' style={{fontSize:20, color:'#6B7B8B'}} />
             
             </TouchableOpacity>
 
@@ -43,7 +44,7 @@ const CDetails = (props) => {
 };
 
 /**
- * @param props 
+ * @param isBorderLeftWidth 
  * @param style 
  */
 const CSmallBox = (props) => {
@@ -135,7 +136,7 @@ const CButton2 = ({onPressButton2=()=>{}, buttonName='', backgroundColor='#FA634
 
         <Text style={{flex:1, fontSize:16, color:'#FFF', fontWeight:'700', lineHeight:30, textAlign:'center'}}>{buttonName}</Text>
 
-        {isIcon?<View style={{width:10, height:10, backgroundColor:'#FFF'}} />:null}
+        {isIcon?<Ionicons name='caret-down' style={{fontSize:14, color:'#FFFFFF'}} />:null}
 
     </TouchableOpacity>
 };
