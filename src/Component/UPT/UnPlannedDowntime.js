@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
-import { CGeneral, CDetails, CSmallBox, CSmallBoxItem2, CSmallBoxItem3 } from '../Common/Selector';
+import {View, Text} from 'react-native';
+import { CGeneral, CDetails, CSmallBox, CSmallBoxItem2, CSmallBoxItem3, CTiming } from '../Common/Selector';
 import R from '../R';
 
 
@@ -34,7 +34,17 @@ class UnPlannedDowntime extends Component {
                     
                     <CSmallBox isBorderLeftWidth>
 
-                        <CSmallBoxItem3 buttonName='Resolved' backgroundColor='#FCA800' />
+                        <CSmallBoxItem3 buttonName='Resolved' backgroundColor='#FCA800'>
+
+                            <CTiming />
+                            <CTiming isMarginLeft />
+
+                            <Text style={{fontSize:60, color:'#58616A', paddingHorizontal:5}}>:</Text>
+
+                            <CTiming />
+                            <CTiming isMarginLeft />
+
+                        </CSmallBoxItem3>
 
                     </CSmallBox>
 

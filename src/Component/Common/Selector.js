@@ -86,31 +86,15 @@ const CSmallBoxItem2 = ({onPressButton2=()=>{}, label='', buttonName='', backgro
  * @param buttonName 
  * @param backgroundColor 
  * @param isIcon 
- * @param number 
- * @param isMarginLeft 
  */
-const CSmallBoxItem3 = ({onPressButton2=()=>{}, buttonName='', backgroundColor='#FA6348', isIcon=false, number}) => {
-
-    const CTiming = ({isMarginLeft=false}) => {
-        
-        return <View style={{flex:1, justifyContent:'center', height:80, backgroundColor:'#FFF', marginLeft:isMarginLeft?3:null, borderWidth:1, borderColor:'#DBE2E8', borderRadius:3}}>
-            
-            <Text style={{fontSize:60, color:'#58616A', fontWeight:'300', lineHeight:80, textAlign:'center'}}>{number||0}</Text>
-        
-        </View>};
+const CSmallBoxItem3 = (props) => {
+    
+    const {onPressButton2=()=>{}, buttonName='', backgroundColor='#FA6348', isIcon=false} = props;
 
     return <>
 
         <View style={{flexDirection:'row', marginTop:25}}>
-
-            <CTiming />
-            <CTiming isMarginLeft />
-
-            <Text style={{fontSize:60, color:'#58616A', paddingHorizontal:5}}>:</Text>
-
-            <CTiming />
-            <CTiming isMarginLeft />
-
+            {props.children}
         </View>
 
         <CButton2 
@@ -121,6 +105,20 @@ const CSmallBoxItem3 = ({onPressButton2=()=>{}, buttonName='', backgroundColor='
         />
 
     </>
+};
+
+
+/**
+ * @param number
+ * @param isMarginLeft
+ */
+const CTiming = ({isMarginLeft=false, number}) => {
+        
+    return <View style={{flex:1, justifyContent:'center', height:80, backgroundColor:'#FFF', marginLeft:isMarginLeft?3:null, borderWidth:1, borderColor:'#DBE2E8', borderRadius:3}}>
+        
+        <Text style={{fontSize:60, color:'#58616A', fontWeight:'300', lineHeight:80, textAlign:'center'}}>{number||0}</Text>
+    
+    </View>
 };
 
 
@@ -179,5 +177,7 @@ export {
     CSmallBox,
 
     CSmallBoxItem2,
-    CSmallBoxItem3
+    CSmallBoxItem3,
+
+    CTiming
 }
