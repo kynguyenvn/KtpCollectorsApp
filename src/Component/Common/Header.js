@@ -10,7 +10,6 @@ export function Header() {
   
   const netInfo = useNetInfo();
   
-  console.log('netInfor', R.Net.isConnected);
   
   return (
     

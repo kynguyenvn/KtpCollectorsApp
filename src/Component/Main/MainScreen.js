@@ -1,26 +1,74 @@
 import React, {Component} from 'react';
 import {View} from 'react-native';
-import R from '../R';
-import { TabBar } from '../Common/TabBar';
+import {TabBar} from '../Common/TabBar';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
-import { GoodUnitAndReject } from './GoodUnitAndReject';
-import { UnPlannedDowntime } from '../UPT/UnPlannedDowntime';
+import {GoodUnitAndReject} from './GoodUnitAndReject';
+import {UnPlannedDowntime} from '../UPT/UnPlannedDowntime';
 import {PlannedDowntime} from '../PDT/PlannedDowntime';
 import {Changeover} from '../Changeover/Changeover';
-import { Footer } from '../Common/Footer';
-import { AlertScreen } from '../Common/AlertScreen';
+import {Footer} from '../Common/Footer';
+import {AlertScreen} from '../Common/AlertScreen';
 
 
 /**
+ * mock data
+ */
+const shift = {
+  start: 1598846400000, end: 1598889600000, shiftlyBuiltUnits: 3000,
+  completeHours: [
+  {builtUnits: 1000, hourStart: 1598857200000}
+  ]
+  }
+
+/**
  * props:{}
- * 
+ *
  * state:{}
  */
 export default class MainScreen extends Component {
-
-    constructor(props){
-        super(props);
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentTime: new Date().getTime(),
+      minute: new Date().getMinutes()
     }
+  }
+
+
+  UNSAFE_componentWillMount() {
+    this.startClockEvents();
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.firstMinuteTimeout);
+    clearInterval(this.minuteInterval);
+  }
+
+  startClockEvents = () => {
+    const secondInMillisecs = 1000;
+    const minuteInSecs = 60;
+    const minuteInMillisecs = minuteInSecs * secondInMillisecs;
+    const currentTime = new Date();
+
+    this.setState({ currentTime: currentTime.getTime()})
+    this.firstMinuteTimeout = setTimeout(() => {
+      this.minutePassed();
+      this.minuteInterval = setInterval(
+        () => this.minutePassed(),
+        minuteInMillisecs
+      );
+    }, (minuteInSecs - currentTime.getSeconds()) * secondInMillisecs);
+  }
+
+  minutePassed = ()=> {
+    let minuteMark = new Date().getMinutes();
+    const currentTime = new Date().getTime();
+    if (minuteMark === 59) {
+      console.log('oneHourPass')
+    }
+    if(minuteMark === 0){minuteMark =+ 1}
+    this.setState({ currentTime, minute: minuteMark})
+  }
 
 
     /**
@@ -35,6 +83,7 @@ export default class MainScreen extends Component {
     render(){
 
         const {navigation} = this.props;
+        const { minute, currentTime } = this.state;
 
         return(
             
@@ -54,6 +103,7 @@ export default class MainScreen extends Component {
                     <GoodUnitAndReject
                         tabLabel={'Default'.toUpperCase()}
                         navigation={navigation}
+                        minuteMark={minute} shift={shift} currentTime={currentTime}
                     />
 
                     <UnPlannedDowntime
@@ -82,5 +132,5 @@ export default class MainScreen extends Component {
             </View>
 
         );
-    }
+  }
 }

@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import R from '../R';
 import { CGeneral } from '../Common/Selector';
+import {Hourly} from '../Common/Hourly';
+import {Shift} from '../Common/Shift';
+
 
 
 /**
@@ -17,8 +20,9 @@ class GoodUnitAndReject extends Component {
         return(
 
             <CGeneral>
-
                 <View style={{flex:1}}>
+                  <Hourly minuteMark={this.props.minuteMark}  />
+                  <Shift shift={this.props.shift} currentTime={this.props.currentTime} />
 
                 </View>
 
