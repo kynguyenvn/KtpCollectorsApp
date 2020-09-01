@@ -4,6 +4,7 @@ import R from '../R';
 import { CGeneral } from '../Common/Selector';
 import {Hourly} from '../Common/Hourly';
 import {Shift} from '../Common/Shift';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
 
@@ -31,81 +32,35 @@ class GoodUnitAndReject extends Component {
 
                 <View style={{flex:2, flexDirection:'row'}}>
 
-                    <View style={{flex:1, backgroundColor:'#F3F5F7', padding:30, borderWidth:1, borderColor:'#DBE2E8', borderRadius:3}}>
+                    <GoodUnitAndRejectItem title='Good' onPressNumpad={()=>navigation.navigate('numpad')}>
 
-                        <View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+                        <TouchableOpacity activeOpacity={0.8} style={{flex:361, backgroundColor:'#20AD55', justifyContent:'center', alignItems:'center', borderRadius:35, ...R.Style.shadowButton}}>
 
-                            <TouchableOpacity activeOpacity={0.8} onPress={()=>navigation.navigate('numpad')} style={{height:40, width:40, borderRadius:20, backgroundColor:'#FFF', borderWidth:1, borderColor:'#DBE2E8', ...R.Style.shadowIcon}} />
+                            <Text style={{fontSize:16, color:'#FFF', fontWeight:'600', lineHeight:30}}>+1</Text>
 
-                            <Text style={{fontSize:22, color:'#3F4246', fontWeight:'700', lineHeight:40}}>GOOD</Text>
+                        </TouchableOpacity>
 
-                            <TouchableOpacity activeOpacity={0.8} style={{height:40, width:40, borderRadius:20, backgroundColor:'#FFF', borderWidth:1, borderColor:'#DBE2E8', ...R.Style.shadowIcon}} />
+                        <TouchableOpacity activeOpacity={0.8} style={{flex:173, backgroundColor:'#405CD7', justifyContent:'center', alignItems:'center', borderRadius:35, marginLeft:15, ...R.Style.shadowButton}}>
 
-                        </View>
+                            <Text style={{fontSize:16, color:'#FFF', fontWeight:'600', lineHeight:30}}>+1 Network</Text>
 
-                        <View style={{flex:1, flexDirection:'row', justifyContent:'space-between', marginTop:20}}>
+                        </TouchableOpacity>
 
-                            <View style={{flex:1, backgroundColor:'#FFF', justifyContent:'center', alignItems:'center', borderWidth:1, borderColor:'#DBE2E8', borderRadius:3}} />
-
-                            <View style={{flex:1, backgroundColor:'#FFF', justifyContent:'center', alignItems:'center', borderWidth:1, borderColor:'#DBE2E8', borderRadius:3, marginLeft:15}} />
-
-                            <View style={{flex:1, backgroundColor:'#FFF', justifyContent:'center', alignItems:'center', borderWidth:1, borderColor:'#DBE2E8', borderRadius:3, marginLeft:15}} />
-
-                        </View>
-
-                        <View style={{flexDirection:'row', height:50, marginTop:20}}>
-
-                            <TouchableOpacity activeOpacity={0.8} style={{flex:361, backgroundColor:'#20AD55', justifyContent:'center', alignItems:'center', borderRadius:35, ...R.Style.shadowButton}}>
-
-                                <Text style={{fontSize:16, color:'#FFF', fontWeight:'600', lineHeight:30}}>+1</Text>
-
-                            </TouchableOpacity>
-
-                            <TouchableOpacity activeOpacity={0.8} style={{flex:173, backgroundColor:'#405CD7', justifyContent:'center', alignItems:'center', borderRadius:35, marginLeft:15, ...R.Style.shadowButton}}>
-
-                                <Text style={{fontSize:16, color:'#FFF', fontWeight:'600', lineHeight:30}}>+1 Network</Text>
-
-                            </TouchableOpacity>
-
-                        </View>
-
-                    </View>
+                    </GoodUnitAndRejectItem>
 
                     <View style={{width:30}} />
 
-                    <View style={{flex:1, backgroundColor:'#F3F5F7', padding:30, borderWidth:1, borderColor:'#DBE2E8', borderRadius:3}}>
+                    <GoodUnitAndRejectItem title='Reject' isPaddingHorizontal>
 
-                        <View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+                        <TouchableOpacity activeOpacity={0.8} style={{flex:361, flexDirection:'row', backgroundColor:'#FA6348', justifyContent:'space-between', alignItems:'center', paddingHorizontal:24, borderRadius:35, ...R.Style.shadowButton}}>
 
-                            <TouchableOpacity activeOpacity={0.8} style={{height:40, width:40, borderRadius:20, backgroundColor:'#FFF', borderWidth:1, borderColor:'#DBE2E8', ...R.Style.shadowIcon}} />
+                            <Text style={{flex:1, fontSize:16, color:'#FFF', fontWeight:'600', lineHeight:30, textAlign:'center', marginLeft:24}}>+1</Text>
 
-                            <Text style={{fontSize:22, color:'#3F4246', fontWeight:'700', lineHeight:40}}>REJECT</Text>
+                            <Ionicons name='caret-down' style={{fontSize:14, color:'#FFFFFF'}} />
 
-                            <TouchableOpacity activeOpacity={0.8} style={{height:40, width:40, borderRadius:20, backgroundColor:'#FFF', borderWidth:1, borderColor:'#DBE2E8', ...R.Style.shadowIcon}} />
+                        </TouchableOpacity>
 
-                        </View>
-
-                        <View style={{flex:1, flexDirection:'row', justifyContent:'space-between', marginTop:20}}>
-
-                            <View style={{flex:1, backgroundColor:'#FFF', justifyContent:'center', alignItems:'center', borderWidth:1, borderColor:'#DBE2E8', borderRadius:3}} />
-
-                            <View style={{flex:1, backgroundColor:'#FFF', justifyContent:'center', alignItems:'center', borderWidth:1, borderColor:'#DBE2E8', borderRadius:3, marginLeft:15}} />
-
-                            <View style={{flex:1, backgroundColor:'#FFF', justifyContent:'center', alignItems:'center', borderWidth:1, borderColor:'#DBE2E8', borderRadius:3, marginLeft:15}} />
-
-                        </View>
-
-                        <View style={{flexDirection:'row', height:50, marginTop:20, paddingHorizontal:56}}>
-
-                            <TouchableOpacity activeOpacity={0.8} style={{flex:361, backgroundColor:'#FA6348', justifyContent:'center', alignItems:'center', borderRadius:35, ...R.Style.shadowButton}}>
-
-                                <Text style={{fontSize:16, color:'#FFF', fontWeight:'600', lineHeight:30}}>+1</Text>
-
-                            </TouchableOpacity>
-
-                        </View>
-
-                    </View>
+                    </GoodUnitAndRejectItem>
 
                 </View>
 
@@ -113,5 +68,53 @@ class GoodUnitAndReject extends Component {
         );
     }
 }
+
+
+/**
+ * @param title
+ * @param isPaddingHorizontal
+ * @param onPressNumpad
+ */
+const GoodUnitAndRejectItem = (props) => {
+
+    const {title='', isPaddingHorizontal=false, onPressNumpad=()=>{}} = props;
+
+    return <View style={{flex:1, backgroundColor:'#F3F5F7', padding:30, borderWidth:1, borderColor:'#DBE2E8', borderRadius:3}}>
+
+        <View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between'}}>
+
+            <TouchableOpacity activeOpacity={0.8} onPress={onPressNumpad} style={{height:40, width:40, borderRadius:20, justifyContent:'center', alignItems:'center', backgroundColor:'#FFF', borderWidth:1, borderColor:'#DBE2E8', ...R.Style.shadowIcon}}>
+
+                <Ionicons name='calculator' style={{fontSize:18, color:'#00538B'}} />
+
+            </TouchableOpacity>
+
+            <Text style={{fontSize:22, color:'#3F4246', fontWeight:'700', lineHeight:40}}>{title.toUpperCase()}</Text>
+
+            <TouchableOpacity activeOpacity={0.8} style={{height:40, width:40, borderRadius:20, justifyContent:'center', alignItems:'center', backgroundColor:'#FFF', borderWidth:1, borderColor:'#DBE2E8', ...R.Style.shadowIcon}}>
+
+                <Ionicons name='arrow-undo' style={{fontSize:18, color:'#CAD3DB'}} />
+
+            </TouchableOpacity>
+
+        </View>
+
+        <View style={{flex:1, flexDirection:'row', justifyContent:'space-between', marginTop:20}}>
+
+            <View style={{flex:1, backgroundColor:'#FFF', justifyContent:'center', alignItems:'center', borderWidth:1, borderColor:'#DBE2E8', borderRadius:3}} />
+
+            <View style={{flex:1, backgroundColor:'#FFF', justifyContent:'center', alignItems:'center', borderWidth:1, borderColor:'#DBE2E8', borderRadius:3, marginLeft:15}} />
+
+            <View style={{flex:1, backgroundColor:'#FFF', justifyContent:'center', alignItems:'center', borderWidth:1, borderColor:'#DBE2E8', borderRadius:3, marginLeft:15}} />
+
+        </View>
+
+        <View style={{flexDirection:'row', height:50, marginTop:20, paddingHorizontal:isPaddingHorizontal?56:null}}>
+            {props.children}
+        </View>
+
+    </View>
+};
+
 
 export {GoodUnitAndReject}
