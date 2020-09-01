@@ -2,6 +2,7 @@ import React from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
 import {useNetInfo} from '@react-native-community/netinfo';
 import R from '../R';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 /**
  * props:{}
@@ -23,7 +24,11 @@ export function Header() {
       
       </View>
       
-      <View style={{width:40, height:40, borderRadius: 20, backgroundColor: netInfo.isConnected?R.C.successColor2:R.C.rejectColor}}/>
+      <View style={{width:40, height:40, borderRadius: 20, justifyContent:'center', alignItems:'center', backgroundColor: netInfo.isConnected?R.C.successColor2:R.C.rejectColor}}>
+
+        <Ionicons name='flash' style={{fontSize:20, color:'#FFFFFF'}} />
+
+      </View>
       
       <Text style={{fontSize:16, color:'#58616A', lineHeight:24, marginLeft:12}}>Connected</Text>
 
@@ -69,7 +74,7 @@ const UserThumbnail = ({name='', backgroundColor='#00538B'}) => {
     
       <Text style={{fontSize:16, color:'#58616A', lineHeight:24, marginLeft:12}}>{name}</Text>
 
-      <View style={{width:12, height:12, backgroundColor:'#00538B', marginLeft:12}} />
+      <Ionicons name='caret-down' style={{fontSize:14, color:'#515A61', marginLeft:12}} />
 
     </TouchableOpacity>
   
