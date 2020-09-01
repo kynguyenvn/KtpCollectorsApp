@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import {View} from 'react-native';
-import { CGeneral, CDetails, CSmallBox } from '../Common/Selector';
+import { CGeneral, CDetails, CSmallBox, CSmallBoxItem2, CSmallBoxItem3 } from '../Common/Selector';
+import R from '../R';
 
 
 /**
- * props:{}
+ * props:{
+ *          goBack=()=>{}
+ * }
  * state:{}
  */
 class UnPlannedDowntime extends Component {
@@ -23,9 +26,17 @@ class UnPlannedDowntime extends Component {
 
                     <CSmallBox />
                     
-                    <CSmallBox isBorderLeftWidth />
+                    <CSmallBox isBorderLeftWidth>
+
+                        <CSmallBoxItem2 label={`DR25 - \nBulk Quality Issue`} buttonName='DR25' isIcon />
+
+                    </CSmallBox>
                     
-                    <CSmallBox isBorderLeftWidth />
+                    <CSmallBox isBorderLeftWidth>
+
+                        <CSmallBoxItem3 buttonName='Resolved' backgroundColor='#FCA800' />
+
+                    </CSmallBox>
 
                 </CDetails>
 

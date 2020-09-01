@@ -43,15 +43,101 @@ const CDetails = (props) => {
 };
 
 /**
- * 
+ * @param props 
+ * @param style 
  */
 const CSmallBox = (props) => {
 
-    const {isBorderLeftWidth=false} = props;
+    const {isBorderLeftWidth=false, style} = props;
 
-    return <View style={{flex:1, borderTopWidth:1, borderLeftWidth:isBorderLeftWidth?1:null, borderColor:'#CAD3DB'}}>
+    return <View style={{flex:1, justifyContent:'space-between', borderTopWidth:1, borderLeftWidth:isBorderLeftWidth?1:null, borderColor:'#CAD3DB', padding:30, ...style}}>
         {props.children}
     </View>
+};
+
+
+/**
+ * @param onPressButton2 
+ * @param label 
+ * @param buttonName 
+ * @param backgroundColor 
+ * @param isIcon 
+ */
+const CSmallBoxItem2 = ({onPressButton2=()=>{}, label='', buttonName='', backgroundColor='#FA6348', isIcon=false}) => {
+
+    return <>
+
+        <Text style={{fontSize:26, color:'#3F4246', fontWeight:'300', lineHeight:40, textAlign:'center', marginTop:30}}>{label}</Text>
+
+        <CButton2 
+            onPressButton2={onPressButton2}
+            buttonName={buttonName}
+            backgroundColor={backgroundColor}
+            isIcon={isIcon}
+        />
+
+    </>
+};
+
+
+/**
+ * @param onPressButton2 
+ * @param buttonName 
+ * @param backgroundColor 
+ * @param isIcon 
+ * @param number 
+ * @param isMarginLeft 
+ */
+const CSmallBoxItem3 = ({onPressButton2=()=>{}, buttonName='', backgroundColor='#FA6348', isIcon=false, number}) => {
+
+    const CTiming = ({isMarginLeft=false}) => {
+        
+        return <View style={{flex:1, justifyContent:'center', height:80, backgroundColor:'#FFF', marginLeft:isMarginLeft?3:null, borderWidth:1, borderColor:'#DBE2E8', borderRadius:3}}>
+            
+            <Text style={{fontSize:60, color:'#58616A', fontWeight:'300', lineHeight:80, textAlign:'center'}}>{number||0}</Text>
+        
+        </View>};
+
+    return <>
+
+        <View style={{flexDirection:'row', marginTop:25}}>
+
+            <CTiming />
+            <CTiming isMarginLeft />
+
+            <Text style={{fontSize:60, color:'#58616A', paddingHorizontal:5}}>:</Text>
+
+            <CTiming />
+            <CTiming isMarginLeft />
+
+        </View>
+
+        <CButton2 
+            onPressButton2={onPressButton2}
+            buttonName={buttonName}
+            backgroundColor={backgroundColor}
+            isIcon={isIcon}
+        />
+
+    </>
+};
+
+
+/**
+ * @param onPressButton2 
+ * @param buttonName 
+ * @param backgroundColor 
+ * @param isIcon
+ */
+const CButton2 = ({onPressButton2=()=>{}, buttonName='', backgroundColor='#FA6348', isIcon=false}) => {
+
+    return <TouchableOpacity activeOpacity={0.8} onPress={onPressButton2} style={{flexDirection:'row', height:48, backgroundColor:backgroundColor, justifyContent:isIcon?'space-between':'center', alignItems:'center', paddingHorizontal:26, borderRadius:35, ...R.Style.shadowButton}}>
+
+        <Text style={{flex:1, fontSize:16, color:'#FFF', fontWeight:'700', lineHeight:30, textAlign:'center'}}>{buttonName}</Text>
+
+        {isIcon?<View style={{width:10, height:10, backgroundColor:'#FFF'}} />:null}
+
+    </TouchableOpacity>
 };
 
 
@@ -84,7 +170,13 @@ const CButton = ({buttonName='', onPress=()=>{}, marginTop=30, color='#FFF', bac
 
 export {
     CButton,
+    CButton2,
+    
     CGeneral,
     CDetails,
-    CSmallBox
+    
+    CSmallBox,
+
+    CSmallBoxItem2,
+    CSmallBoxItem3
 }

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View} from 'react-native';
-import { CGeneral, CDetails, CSmallBox } from '../Common/Selector';
+import { CGeneral, CDetails, CSmallBox, CSmallBoxItem2, CSmallBoxItem3 } from '../Common/Selector';
 
 
 /**
@@ -23,9 +23,17 @@ class PlannedDowntime extends Component {
 
                     <CSmallBox />
                     
-                    <CSmallBox isBorderLeftWidth />
+                    <CSmallBox isBorderLeftWidth>
+
+                        <CSmallBoxItem2 label={`SM02 - \nTesting New Part`} backgroundColor='#00538B' buttonName='SM02' isIcon />
+
+                    </CSmallBox>
                     
-                    <CSmallBox isBorderLeftWidth />
+                    <CSmallBox isBorderLeftWidth>
+
+                        <CSmallBoxItem3 buttonName='Complete' backgroundColor='#FCA800' />
+
+                    </CSmallBox>
 
                 </CDetails>
 
