@@ -11,7 +11,6 @@ export function Header() {
   
   const netInfo = useNetInfo();
   
-  
   return (
     
     <View style={{flexDirection: 'row', alignItems: 'center', backgroundColor:'#F3F5F7', paddingVertical:10, paddingHorizontal:50}}>
@@ -47,7 +46,7 @@ export function Header() {
  */
 const DataLink = ({line='', wStation='', PN='', BN=''}) => {
 
-  return <Text numberOfLines={1} style={{fontSize:16, color:'#3F4246', fontWeight:'600', lineHeight:20, marginLeft:50}}>Line: {line||'N/A'} - W/S: {wStation||'N/A'} - P/N: {PN||'N/A'} - B/N: {BN||'N/A'}</Text>
+  return <Text numberOfLines={1} style={{flex:1, fontSize:16, color:'#3F4246', fontWeight:'600', lineHeight:20, marginLeft:50}}>Line: {line||'N/A'} - W/S: {wStation||'N/A'} - P/N: {PN||'N/A'} - B/N: {BN||'N/A'}</Text>
   
 };
 

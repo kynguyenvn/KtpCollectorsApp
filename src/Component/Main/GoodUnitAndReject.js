@@ -33,33 +33,17 @@ class GoodUnitAndReject extends Component {
 
                 <View style={{flex:2, flexDirection:'row'}}>
 
-                    <GoodUnitAndRejectItem title='Good' onPressNumpad={()=>navigation.navigate('numpad')}>
+                    <GoodUnitAndRejectItem title='Good' isButtonNetwork onPressNumpad={()=>navigation.navigate('numpad')}>
 
-                        <TouchableOpacity activeOpacity={0.8} style={{flex:361, backgroundColor:'#20AD55', justifyContent:'center', alignItems:'center', borderRadius:35, ...R.Style.shadowButton}}>
-
-                            <Text style={{fontSize:16, color:'#FFF', fontWeight:'600', lineHeight:30}}>+1</Text>
-
-                        </TouchableOpacity>
-
-                        <TouchableOpacity activeOpacity={0.8} style={{flex:173, backgroundColor:'#405CD7', justifyContent:'center', alignItems:'center', borderRadius:35, marginLeft:15, ...R.Style.shadowButton}}>
-
-                            <Text style={{fontSize:16, color:'#FFF', fontWeight:'600', lineHeight:30}}>+1 Network</Text>
-
-                        </TouchableOpacity>
+                        <DigitsCard unitCount={150}/>
 
                     </GoodUnitAndRejectItem>
 
                     <View style={{width:30}} />
 
-                    <GoodUnitAndRejectItem title='Reject' isPaddingHorizontal>
+                    <GoodUnitAndRejectItem title='Reject' backgroundColor='#FA6348' isReject>
 
-                        <TouchableOpacity activeOpacity={0.8} style={{flex:361, flexDirection:'row', backgroundColor:'#FA6348', justifyContent:'space-between', alignItems:'center', paddingHorizontal:24, borderRadius:35, ...R.Style.shadowButton}}>
-
-                            <Text style={{flex:1, fontSize:16, color:'#FFF', fontWeight:'600', lineHeight:30, textAlign:'center', marginLeft:24}}>+1</Text>
-
-                            <Ionicons name='caret-down' style={{fontSize:14, color:'#FFFFFF'}} />
-
-                        </TouchableOpacity>
+                        <DigitsCard unitCount={3}/>
 
                     </GoodUnitAndRejectItem>
 
@@ -73,12 +57,12 @@ class GoodUnitAndReject extends Component {
 
 /**
  * @param title
- * @param isPaddingHorizontal
+ * @param isReject
  * @param onPressNumpad
  */
 const GoodUnitAndRejectItem = (props) => {
 
-    const {title='', isPaddingHorizontal=false, onPressNumpad=()=>{}} = props;
+    const {title='', isReject=false, isButtonNetwork=false, onPressNumpad=()=>{}, backgroundColor='#20AD55'} = props;
 
     return <View style={{flex:1, backgroundColor:'#F3F5F7', padding:30, borderWidth:1, borderColor:'#DBE2E8', borderRadius:3}}>
 
@@ -100,10 +84,24 @@ const GoodUnitAndRejectItem = (props) => {
 
         </View>
 
-        <DigitsCard unitCount={20000}/>
+        {props.children}
 
-        <View style={{flexDirection:'row', height:50, marginTop:20, paddingHorizontal:isPaddingHorizontal?56:null}}>
-            {props.children}
+        <View style={{flexDirection:'row', height:50, marginTop:20, paddingHorizontal:isReject?56:null}}>
+            
+            <TouchableOpacity activeOpacity={0.8} style={{flex:361, flexDirection:'row', backgroundColor:backgroundColor, justifyContent:isReject?'space-between':'center', alignItems:'center', paddingHorizontal:isReject?24:null, borderRadius:35, ...R.Style.shadowButton}}>
+
+                <Text numberOfLines={1} style={{flex:1, fontSize:16, color:'#FFF', fontWeight:'600', lineHeight:30, textAlign:'center', marginLeft:isReject?24:null}}>+1</Text>
+
+                {isReject?<Ionicons name='caret-down' style={{fontSize:14, color:'#FFFFFF'}} />:null}
+
+            </TouchableOpacity>
+
+            {isButtonNetwork?<TouchableOpacity activeOpacity={0.8} style={{flex:173, backgroundColor:'#405CD7', justifyContent:'center', alignItems:'center', borderRadius:35, marginLeft:15, ...R.Style.shadowButton}}>
+
+                <Text style={{fontSize:16, color:'#FFF', fontWeight:'600', lineHeight:30}}>+1 Network</Text>
+
+            </TouchableOpacity>:null}
+        
         </View>
 
     </View>
