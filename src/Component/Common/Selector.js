@@ -172,14 +172,16 @@ const CButton = ({buttonName='', onPress=()=>{}, marginTop=30, color='#FFF', bac
  *          title='',
  *          width:509,
  *          maxHeight:374,
- *          goBack=()=>{}
+ *          goBack=()=>{},
+ *          isButton=false,
+ *          onPressModal=()=>{}
  * }
  */
 class Modal extends Component {
 
     render(){
 
-        const {title='', width=509, maxHeight=374, goBack=()=>{}} = this.props;
+        const {title='', width=509, maxHeight=374, goBack=()=>{}, isButton=false, onPressModal=()=>{}} = this.props;
 
         return(
 
@@ -199,6 +201,16 @@ class Modal extends Component {
                     <View style={{flexDirection:'column', maxHeight:maxHeight}}>
                         {this.props.children}
                     </View>
+
+                    {isButton?<View style={{paddingVertical:20, paddingHorizontal:30, borderTopWidth:1, borderTopColor:'#DBE2E8'}}>
+
+                        <TouchableOpacity activeOpacity={0.8} onPress={onPressModal} style={{height:60, justifyContent:'center', alignItems:'center', backgroundColor:'#00538B', borderRadius:30, ...R.Style.shadowButton}}>
+
+                            <Text style={{fontSize:20, color:'#FFFFFF', fontWeight:'600', lineHeight:30}}>Continue</Text>
+
+                        </TouchableOpacity>
+
+                    </View>:null}
 
                 </View>
 
