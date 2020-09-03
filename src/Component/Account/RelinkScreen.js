@@ -3,6 +3,7 @@ import {View, Text} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import R from '../R';
 import { CButton } from '../Common/Selector';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
 /**
@@ -59,7 +60,7 @@ export default class RelinkScreen extends Component {
 
                     <TouchableOpacity activeOpacity={0.8} style={{height:84, flexDirection: 'row', alignItems:'center', justifyContent:'center'}}>
 
-                        <Text style={{marginRight:15, color:'#FFF'}}>{'<--'}</Text>
+                        <Ionicons name='arrow-back' style={{fontSize:20, color:'#FFFFFF'}} />
 
                         <Text style={{fontSize:16, color:'#FFF', fontWeight:'600'}}>BACK</Text>
 

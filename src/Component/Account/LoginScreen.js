@@ -4,6 +4,7 @@ import { TextInput, ScrollView } from 'react-native-gesture-handler';
 import { CButton } from '../Common/Selector';
 import R from '../R';
 import {AuthContext} from '../../App';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
 /**
@@ -56,7 +57,7 @@ const {signIn} = React.useContext(AuthContext);
                         
                         <TouchableOpacity activeOpacity={0.8} style={{width:56, height:50, marginRight:10, justifyContent:'center', alignItems: 'center'}}>
                             
-                            <Text style={{color:'#00538B'}}>{'-->'}</Text>
+                            <Ionicons name='arrow-forward' style={{fontSize:20, color:'#00538B'}} />
                         
                         </TouchableOpacity>
 
