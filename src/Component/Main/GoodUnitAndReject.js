@@ -49,6 +49,7 @@ class GoodUnitAndReject extends Component {
                         title='Reject' 
                         backgroundColor='#FA6348' 
                         isReject
+                        onPress={()=>navigation.navigate('reason')}
                     >
                         <DigitsCard unitCount={3}/>
 
