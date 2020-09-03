@@ -37,6 +37,7 @@ class GoodUnitAndReject extends Component {
                         title='Good' 
                         isButtonNetwork 
                         onPressNumpad={()=>navigation.navigate('numpad')}
+                        onPress={()=> R.toast.unitToast('1000 good units added', 3000)}
                     >
                         <DigitsCard unitCount={150}/>
 
@@ -67,10 +68,11 @@ class GoodUnitAndReject extends Component {
  * @param onPressNumpad
  * @param isButtonNetwork
  * @param backgroundColor
+ * @param onPress
  */
 const GoodUnitAndRejectItem = (props) => {
 
-    const {title='', isReject=false, isButtonNetwork=false, onPressNumpad=()=>{}, backgroundColor='#20AD55'} = props;
+    const {title='', isReject=false, isButtonNetwork=false, onPressNumpad=()=>{}, backgroundColor='#20AD55', onPress=()=>{}} = props;
 
     return <View style={{flex:1, backgroundColor:'#F3F5F7', padding:30, borderWidth:1, borderColor:'#DBE2E8', borderRadius:3}}>
 
@@ -96,7 +98,7 @@ const GoodUnitAndRejectItem = (props) => {
 
         <View style={{flexDirection:'row', height:50, marginTop:20, paddingHorizontal:isReject?56:null}}>
             
-            <TouchableOpacity activeOpacity={0.8} style={{flex:361, flexDirection:'row', backgroundColor:backgroundColor, justifyContent:isReject?'space-between':'center', alignItems:'center', paddingHorizontal:isReject?24:null, borderRadius:35, ...R.Style.shadowButton}}>
+            <TouchableOpacity activeOpacity={0.8} onPress={onPress} style={{flex:361, flexDirection:'row', backgroundColor:backgroundColor, justifyContent:isReject?'space-between':'center', alignItems:'center', paddingHorizontal:isReject?24:null, borderRadius:35, ...R.Style.shadowButton}}>
 
                 <Text numberOfLines={1} style={{flex:1, fontSize:16, color:'#FFF', fontWeight:'600', lineHeight:30, textAlign:'center', marginLeft:isReject?24:null}}>+1</Text>
 
@@ -104,7 +106,7 @@ const GoodUnitAndRejectItem = (props) => {
 
             </TouchableOpacity>
 
-            {isButtonNetwork?<TouchableOpacity activeOpacity={0.8} style={{flex:173, backgroundColor:'#405CD7', justifyContent:'center', alignItems:'center', borderRadius:35, marginLeft:15, ...R.Style.shadowButton}}>
+            {isButtonNetwork?<TouchableOpacity activeOpacity={0.8}  style={{flex:173, backgroundColor:'#405CD7', justifyContent:'center', alignItems:'center', borderRadius:35, marginLeft:15, ...R.Style.shadowButton}}>
 
                 <Text style={{fontSize:16, color:'#FFF', fontWeight:'600', lineHeight:30}}>+1 Network</Text>
 

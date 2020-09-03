@@ -2,11 +2,14 @@ import React from 'react';
 import 'react-native-gesture-handler';
 import {StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import UNavigator from './System/UNavigator';
 import FlashMessage from 'react-native-flash-message';
+import {getUniqueId} from 'react-native-device-info';
+import UNavigator from './System/UNavigator';
 
 export const AuthContext = React.createContext();
 const App = () => {
+  const uniqueId = getUniqueId();
+  console.log('uniqueId', uniqueId);
   const [state, dispatch] = React.useReducer(
     (prevState, action) => {
       switch (action.type) {

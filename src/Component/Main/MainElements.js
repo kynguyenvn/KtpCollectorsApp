@@ -11,7 +11,7 @@ import R from "../R";
  */
 
 
-const DigitsCard = ({unitCount}) => {
+const DigitsCard = ({unitCount=0}) => {
 
     function getDigits() {
         if (unitCount < 1000) {
@@ -38,7 +38,7 @@ const DigitsCard = ({unitCount}) => {
 
 /**
  *
- * @param name
+ * @param title
  * @param targetAmount
  * @param currentAmount
  * @param style
@@ -47,14 +47,14 @@ const DigitsCard = ({unitCount}) => {
  */
 
 
-const ProgressBar = ({ name, targetAmount, currentAmount, style, ...props}) => {
+const ProgressBar = ({ title='', targetAmount=0, currentAmount=0, style, ...props}) => {
 
 
     return (
         <View style={{ flex: 1, flexDirection: 'row',  ...style, height: 30,justifyContent: 'center', alignItems: 'center'}}>  
         
              <View style={{ width: 70}}>
-                 <Text style={{color: R.C.textCardColor, fontSize: 16, fontWeight: 'bold'}}>{name}</Text>
+                 <Text style={{color: R.C.textCardColor, fontSize: 16, fontWeight: 'bold'}}>{title}</Text>
              </View>
      
              <LinearGradient 

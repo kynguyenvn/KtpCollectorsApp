@@ -26,7 +26,7 @@ class Hourly extends Component {
         return(
        <ProgressBar
        style={{marginBottom: 40, marginTop: 20}}
-       name={'Hourly'}
+       title={'Hourly'}
        currentAmount={'12'}
        targetAmount={'220'}
        >

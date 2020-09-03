@@ -34,7 +34,7 @@ class Shift extends Component {
     return (
      <ProgressBar
      style={{ marginTop: 40, marginBottom: 20}}
-     name={'Shift'}
+     title={'Shift'}
      currentAmount={'220'}
      targetAmount={'4080'}
      >
