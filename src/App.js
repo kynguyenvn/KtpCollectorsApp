@@ -4,10 +4,12 @@ import {StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import FlashMessage from 'react-native-flash-message';
 import {getUniqueId} from 'react-native-device-info';
+import { useKeepAwake } from 'expo-keep-awake';
 import UNavigator from './System/UNavigator';
 
 export const AuthContext = React.createContext();
 const App = () => {
+  useKeepAwake();
   const uniqueId = getUniqueId();
   console.log('uniqueId', uniqueId);
   const [state, dispatch] = React.useReducer(
