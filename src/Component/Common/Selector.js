@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
 import R from '../R';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -167,6 +167,48 @@ const CButton = ({buttonName='', onPress=()=>{}, marginTop=30, color='#FFF', bac
 };
 
 
+/**
+ * props:{
+ *          title='',
+ *          width:509,
+ *          maxHeight:374,
+ *          goBack=()=>{}
+ * }
+ */
+class Modal extends Component {
+
+    render(){
+
+        const {title='', width=509, maxHeight=374, goBack=()=>{}} = this.props;
+
+        return(
+
+            <View style={{flex:1, flexDirection:'row', justifyContent:'center', alignItems:'center', backgroundColor:'rgba(0,0,0,0.6)', paddingHorizontal:50, paddingTop:74, paddingBottom:74}}>
+
+                <View style={{width:width, flexDirection:'column', backgroundColor:'#FFFFFF', borderRadius:8, overflow:'hidden', ...R.Style.shadowModal}}>
+
+                    <View style={{height:74, flexDirection:'row', alignItems:'center', justifyContent:'space-between', backgroundColor:'#00538B', borderTopLeftRadius:8, borderTopRightRadius:8}}>
+
+                        <Text style={{fontSize:20, color:'#FFF', fontWeight:'600', lineHeight:30, marginLeft:30}}>{title.toUpperCase()}</Text>
+                        <TouchableOpacity activeOpacity={0.8} onPress={goBack} style={{height:60, width:66, justifyContent:'center', alignItems:'center'}}>
+                            <Ionicons name='close' style={{fontSize:28, color:'#FFFFFF'}} />
+                        </TouchableOpacity>
+
+                    </View>
+
+                    <View style={{flexDirection:'column', maxHeight:maxHeight}}>
+                        {this.props.children}
+                    </View>
+
+                </View>
+
+            </View>
+        
+        );
+    }
+}
+
+
 export {
     CButton,
     CButton2,
@@ -179,5 +221,7 @@ export {
     CSmallBoxItem2,
     CSmallBoxItem3,
 
-    CTiming
+    CTiming,
+
+    Modal
 }
