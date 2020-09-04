@@ -6,6 +6,7 @@ import MainScreen from '../Component/Main/MainScreen';
 import {Header} from '../Component/Common/Header';
 import {NumpadScreen} from '../Component/Main/NumpadScreen';
 import { ReasonCodeScreen } from '../Component/Main/ReasonCodeScreen';
+import { EverythingOkScreen } from '../Component/EverythingOk/EverythingOkScreen';
 
 
 
@@ -90,6 +91,16 @@ export default class UNavigation {
         <Stack.Screen
           name="reason"
           component={ReasonCodeScreen}
+          options={{
+            headerStyle: {
+              backgroundColor:'#F3F5F7'
+            },
+            header: (props) => <Header {...props} />,
+          }}
+        />
+        <Stack.Screen
+          name="everything"
+          component={EverythingOkScreen}
           options={{
             headerStyle: {
               backgroundColor:'#F3F5F7'

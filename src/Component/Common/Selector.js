@@ -174,14 +174,15 @@ const CButton = ({buttonName='', onPress=()=>{}, marginTop=30, color='#FFF', bac
  *          maxHeight:374,
  *          goBack=()=>{},
  *          isButton=false,
- *          onPressModal=()=>{}
+ *          onPressModal=()=>{},
+ *          style
  * }
  */
 class Modal extends Component {
 
     render(){
 
-        const {title='', width=509, maxHeight=374, goBack=()=>{}, isButton=false, onPressModal=()=>{}} = this.props;
+        const {title='', width=509, maxHeight=374, goBack=()=>{}, isButton=false, onPressModal=()=>{}, style} = this.props;
 
         return(
 
@@ -198,7 +199,7 @@ class Modal extends Component {
 
                     </View>
 
-                    <View style={{flexDirection:'column', maxHeight:maxHeight}}>
+                    <View style={{flexDirection:'column', maxHeight:maxHeight, ...style}}>
                         {this.props.children}
                     </View>
 
