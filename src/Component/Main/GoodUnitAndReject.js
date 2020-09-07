@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import R from '../R';
-import { CGeneral } from '../Common/Selector';
+import { General } from '../Common/Selector';
 import {Hourly} from '../Common/Hourly';
 import {Shift} from '../Common/Shift';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -21,7 +21,7 @@ class GoodUnitAndReject extends Component {
 
         return(
 
-            <CGeneral>
+            <General>
                 
                 <View style={{flex:1}}>
                     
@@ -36,7 +36,7 @@ class GoodUnitAndReject extends Component {
                     <GoodUnitAndRejectItem 
                         title='Good' 
                         isButtonNetwork 
-                        onPressNumpad={()=>navigation.navigate('numpad')}
+                        onPressNumpad={()=>navigation.navigate('everything')}
                         onPress={()=> R.toast.unitToast('1000 good units added', 3000)}
                     >
                         <DigitsCard unitCount={150}/>
@@ -57,7 +57,7 @@ class GoodUnitAndReject extends Component {
 
                 </View>
 
-            </CGeneral>
+            </General>
         );
     }
 }

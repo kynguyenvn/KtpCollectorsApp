@@ -6,7 +6,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 /**
  * props:{}
  */
-const CGeneral = (props) => {
+const General = (props) => {
 
     return  <View style={{flex: 1, flexDirection:'column', backgroundColor:'#FFF', paddingHorizontal:50, paddingBottom:30}}>
         {props.children}
@@ -18,7 +18,7 @@ const CGeneral = (props) => {
  * @param title
  * @param goBack
  */
-const CDetails = (props) => {
+const ProjectDetails = (props) => {
 
     const {goBack=()=>{}, title=''} = props;
 
@@ -47,7 +47,7 @@ const CDetails = (props) => {
  * @param isBorderLeftWidth 
  * @param style 
  */
-const CSmallBox = (props) => {
+const ChildDetails = (props) => {
 
     const {isBorderLeftWidth=false, style} = props;
 
@@ -64,7 +64,7 @@ const CSmallBox = (props) => {
  * @param backgroundColor 
  * @param isIcon 
  */
-const CSmallBoxItem2 = ({onPressButton2=()=>{}, label='', buttonName='', backgroundColor='#FA6348', isIcon=false}) => {
+const ChildDetailsItem2 = ({onPressButton2=()=>{}, label='', buttonName='', backgroundColor='#FA6348', isIcon=false}) => {
 
     return <>
 
@@ -87,7 +87,7 @@ const CSmallBoxItem2 = ({onPressButton2=()=>{}, label='', buttonName='', backgro
  * @param backgroundColor 
  * @param isIcon 
  */
-const CSmallBoxItem3 = (props) => {
+const ChildDetailsItem3 = (props) => {
     
     const {onPressButton2=()=>{}, buttonName='', backgroundColor='#FA6348', isIcon=false} = props;
 
@@ -112,7 +112,7 @@ const CSmallBoxItem3 = (props) => {
  * @param number
  * @param isMarginLeft
  */
-const CTiming = ({isMarginLeft=false, number}) => {
+const RunningTime = ({isMarginLeft=false, number}) => {
         
     return <View style={{flex:1, justifyContent:'center', height:80, backgroundColor:'#FFF', marginLeft:isMarginLeft?3:null, borderWidth:1, borderColor:'#DBE2E8', borderRadius:3}}>
         
@@ -226,15 +226,15 @@ export {
     CButton,
     CButton2,
     
-    CGeneral,
-    CDetails,
+    General,
+    ProjectDetails,
     
-    CSmallBox,
+    ChildDetails,
 
-    CSmallBoxItem2,
-    CSmallBoxItem3,
+    ChildDetailsItem2,
+    ChildDetailsItem3,
 
-    CTiming,
+    RunningTime,
 
     Modal
 }

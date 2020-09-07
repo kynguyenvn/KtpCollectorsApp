@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text} from 'react-native';
-import { CGeneral, CDetails, CSmallBox, CSmallBoxItem2, CSmallBoxItem3, CTiming } from '../Common/Selector';
+import { General, ProjectDetails, ChildDetails, ChildDetailsItem2, ChildDetailsItem3, RunningTime } from '../Common/Selector';
 import R from '../R';
 
 
@@ -18,39 +18,39 @@ class UnPlannedDowntime extends Component {
 
         return(
 
-            <CGeneral>
+            <General>
 
                 <View style={{flex:1}} />
 
-                <CDetails title='Unplanned downtime' goBack={goBack}>
+                <ProjectDetails title='Unplanned downtime' goBack={goBack}>
 
-                    <CSmallBox />
+                    <ChildDetails />
                     
-                    <CSmallBox isBorderLeftWidth>
+                    <ChildDetails isBorderLeftWidth>
 
-                        <CSmallBoxItem2 label={`DR25 - \nBulk Quality Issue`} buttonName='DR25' isIcon />
+                        <ChildDetailsItem2 label={`DR25 - \nBulk Quality Issue`} buttonName='DR25' isIcon />
 
-                    </CSmallBox>
+                    </ChildDetails>
                     
-                    <CSmallBox isBorderLeftWidth>
+                    <ChildDetails isBorderLeftWidth>
 
-                        <CSmallBoxItem3 buttonName='Resolved' backgroundColor='#FCA800'>
+                        <ChildDetailsItem3 buttonName='Resolved' backgroundColor='#FCA800'>
 
-                            <CTiming />
-                            <CTiming isMarginLeft />
+                            <RunningTime />
+                            <RunningTime isMarginLeft />
 
                             <Text style={{fontSize:60, color:'#58616A', paddingHorizontal:5}}>:</Text>
 
-                            <CTiming />
-                            <CTiming isMarginLeft />
+                            <RunningTime />
+                            <RunningTime isMarginLeft />
 
-                        </CSmallBoxItem3>
+                        </ChildDetailsItem3>
 
-                    </CSmallBox>
+                    </ChildDetails>
 
-                </CDetails>
+                </ProjectDetails>
 
-            </CGeneral>
+            </General>
         );
     }
 }

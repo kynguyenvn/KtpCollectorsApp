@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text} from 'react-native';
-import { Modal, CTiming } from '../Common/Selector';
+import { Modal, RunningTime } from '../Common/Selector';
 import { EverythingOkItem } from './EverythingOkElements';
 
 
@@ -51,18 +51,18 @@ class EverythingOkScreen extends Component {
 
                     <View style={{flexDirection:'row', alignItems:'center', marginTop:10}}>
 
-                        <CTiming />
-                        <CTiming isMarginLeft />
+                        <RunningTime />
+                        <RunningTime isMarginLeft />
 
                         <Text style={{fontSize:30, color:'#58616A', marginHorizontal:7}}>:</Text>
 
-                        <CTiming />
-                        <CTiming isMarginLeft />
+                        <RunningTime />
+                        <RunningTime isMarginLeft />
 
                         <Text style={{fontSize:30, color:'#58616A', marginHorizontal:7}}>:</Text>
 
-                        <CTiming />
-                        <CTiming isMarginLeft />
+                        <RunningTime />
+                        <RunningTime isMarginLeft />
 
                     </View>
 
