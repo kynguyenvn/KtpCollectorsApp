@@ -186,7 +186,7 @@ class Modal extends Component {
 
         return(
 
-            <View style={{flex:1, flexDirection:'row', justifyContent:'center', alignItems:'center', backgroundColor:'rgba(0,0,0,0.6)', paddingHorizontal:50, paddingTop:74, paddingBottom:74}}>
+            <View style={{flex:1, flexDirection:'row', justifyContent:'center', alignItems:'center', backgroundColor:'rgba(0,0,0,0.6)', paddingHorizontal:50}}>
 
                 <View style={{width:width, flexDirection:'column', backgroundColor:'#FFFFFF', borderRadius:8, overflow:'hidden', ...R.Style.shadowModal}}>
 

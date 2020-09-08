@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, ScrollView} from 'react-native';
 import { Modal, RunningTime } from '../Common/Selector';
 import { EverythingOkItem } from './EverythingOkElements';
 
@@ -44,8 +44,9 @@ class EverythingOkScreen extends Component {
                 width={504}
                 maxHeight={440}
                 goBack={()=>navigation.goBack()}
+                style={{flex:1}}
             >
-                <View style={{width:504, paddingHorizontal:30, paddingVertical:20}}>
+                <View style={{flex:1, paddingHorizontal:30, paddingVertical:20}}>
 
                     <Text style={{fontSize:16, color:'#3F4246', fontWeight:'600', lineHeight:24, textAlign:'center'}}>Idle Time</Text>
 
@@ -68,12 +69,15 @@ class EverythingOkScreen extends Component {
 
                 </View>
 
-                <View style={{width:504, paddingHorizontal:30, paddingVertical:20, borderTopWidth:1, borderTopColor:'#DBE2E8'}}>
+                <View style={{flex:2, paddingHorizontal:30, paddingTop:20, borderTopWidth:1, borderTopColor:'#DBE2E8'}}>
 
                     <Text style={{fontSize:16, color:'#3F4246', fontWeight:'500', lineHeight:24}}>Please select a reason and tap “Continue"</Text>
 
-                    <EverythingOkItem data={data} />
+                    <ScrollView>
+                        
+                        <EverythingOkItem data={data} />
                     
+                    </ScrollView>
                 </View>
 
             </Modal>

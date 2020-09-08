@@ -5,13 +5,13 @@ import {View, Text, TouchableOpacity} from 'react-native';
 /**
  * @param data
  */
-const EverythingOkItem = ({data=[]}) => {
+const EverythingOkItem = ({data=[], style}) => {
 
     const [categorySelection, setCategorySelection] = useState(false);
 
     const ButtonCategorySelection = ({onPressSelect=()=>{}, type='', index}) => (
 
-        <View style={{flexDirection:'row', alignItems:'center', marginTop:15}}>
+        <View style={{flexDirection:'row', alignItems:'center', marginTop:20}}>
             
             <TouchableOpacity activeOpacity={0.8} onPress={onPressSelect} 
                 style={{width:30, height:30, borderRadius:15, justifyContent:'center', alignItems:'center', backgroundColor:'#FFFFFF', borderWidth:2, borderColor:data[index].type===categorySelection?'#20AD55':'#DBE2E8'}}
@@ -28,7 +28,7 @@ const EverythingOkItem = ({data=[]}) => {
         setCategorySelection(type);
     };
 
-    return <View style={{flexDirection:'column', marginBottom:10}}>
+    return <View style={{flexDirection:'column', paddingBottom:20, ...style}}>
 
         {data.map((item, id)=>{
             return <ButtonCategorySelection key={id} index={id} type={item.type} onPressSelect={()=>handleCategorySelection(item.type, id)} />
