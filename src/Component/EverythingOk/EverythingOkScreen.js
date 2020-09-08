@@ -46,7 +46,7 @@ class EverythingOkScreen extends Component {
                 goBack={()=>navigation.goBack()}
                 style={{flex:1}}
             >
-                <View style={{flex:1, paddingHorizontal:30, paddingVertical:20}}>
+                <View style={{flex:174, paddingHorizontal:30, paddingVertical:20}}>
 
                     <Text style={{fontSize:16, color:'#3F4246', fontWeight:'600', lineHeight:24, textAlign:'center'}}>Idle Time</Text>
 
@@ -69,7 +69,7 @@ class EverythingOkScreen extends Component {
 
                 </View>
 
-                <View style={{flex:2, paddingHorizontal:30, paddingTop:20, borderTopWidth:1, borderTopColor:'#DBE2E8'}}>
+                <View style={{flex:381, paddingHorizontal:30, paddingTop:20, borderTopWidth:1, borderTopColor:'#DBE2E8'}}>
 
                     <Text style={{fontSize:16, color:'#3F4246', fontWeight:'500', lineHeight:24}}>Please select a reason and tap “Continue"</Text>
 
