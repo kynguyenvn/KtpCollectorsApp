@@ -36,7 +36,7 @@ class GoodUnitAndReject extends Component {
                     <GoodUnitAndRejectItem 
                         title='Good' 
                         isButtonNetwork 
-                        onPressNumpad={()=>navigation.navigate('everything')}
+                        onPressNumpad={()=>navigation.navigate('numpad')}
                         onPress={()=> R.toast.unitToast('1000 good units added', 3000)}
                     >
                         <DigitsCard unitCount={150}/>
