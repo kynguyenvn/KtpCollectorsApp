@@ -182,7 +182,7 @@ class Modal extends Component {
 
     render(){
 
-        const {title='', width=509, maxHeight=374, goBack=()=>{}, isButton=false, onPressModal=()=>{}, style} = this.props;
+        const {title='', width=509, maxHeight=374, goBack=()=>{}, isButton=false, onPressModal=()=>{}, isPaddingSelectorBatch=false, style} = this.props;
 
         return(
 
@@ -203,7 +203,7 @@ class Modal extends Component {
                         {this.props.children}
                     </View>
 
-                    {isButton?<View style={{paddingVertical:20, paddingHorizontal:30, borderTopWidth:1, borderTopColor:'#DBE2E8'}}>
+                    {isButton?<View style={{paddingVertical:20, paddingHorizontal:isPaddingSelectorBatch?190:30, borderTopWidth:1, borderTopColor:'#DBE2E8'}}>
 
                         <TouchableOpacity activeOpacity={0.8} onPress={onPressModal} style={{height:60, justifyContent:'center', alignItems:'center', backgroundColor:'#00538B', borderRadius:30, ...R.Style.shadowButton}}>
 

@@ -108,21 +108,25 @@ export default class MainScreen extends Component {
 
                     <UnPlannedDowntime
                         tabLabel={'Unplanned D/T'.toUpperCase()}
+                        navigation={navigation}
                         goBack={this.goToDefault}
                     />
 
                     <Changeover
                         tabLabel={'Changeover'.toUpperCase()}
+                        navigation={navigation}
                         goBack={this.goToDefault}
                     />
 
                     <PlannedDowntime
                         tabLabel={'Planned D/T'.toUpperCase()}
+                        navigation={navigation}
                         goBack={this.goToDefault}
                     />
                     
                     <AlertScreen
                         tabLabel={'Alert'.toUpperCase()}
+                        navigation={navigation}
                     />
 
                 </ScrollableTabView>

@@ -8,6 +8,7 @@ import {NumpadScreen} from '../Component/Main/NumpadScreen';
 import { ReasonCodeScreen } from '../Component/Main/ReasonCodeScreen';
 import { EverythingOkScreen } from '../Component/EverythingOk/EverythingOkScreen';
 import { PauseUDTAndPDT } from '../Component/Changeover/PauseUDTAndPDT';
+import { SelectorBatch } from '../Component/Changeover/SelectorBatch';
 
 
 
@@ -102,6 +103,16 @@ export default class UNavigation {
         <Stack.Screen
           name="pause"
           component={PauseUDTAndPDT}
+          options={{
+            headerStyle: {
+              backgroundColor:'#F3F5F7'
+            },
+            header: (props) => <Header {...props} />,
+          }}
+        />
+        <Stack.Screen
+          name="selectorBatch"
+          component={SelectorBatch}
           options={{
             headerStyle: {
               backgroundColor:'#F3F5F7'

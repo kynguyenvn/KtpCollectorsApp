@@ -11,7 +11,7 @@ class Changeover extends Component {
 
     render(){
 
-        const {goBack=()=>{}} = this.props;
+        const {goBack=()=>{}, navigation} = this.props;
 
         return(
 
@@ -25,7 +25,13 @@ class Changeover extends Component {
                     
                     <ChildDetails isBorderLeftWidth>
 
-                        <ChildDetailsItem2 label={`Select Batch \nor Part Number`} backgroundColor='#00538B' buttonName='New Batch' isIcon />
+                        <ChildDetailsItem2 
+                            label={`Select Batch \nor Part Number`} 
+                            backgroundColor='#00538B' 
+                            buttonName='New Batch' 
+                            isIcon 
+                            onPressButton2={()=>navigation.navigate('selectorBatch')}
+                        />
 
                     </ChildDetails>
                     
