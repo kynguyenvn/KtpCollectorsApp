@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text} from 'react-native';
-import { General, ProjectDetails, ChildDetails, ChildDetailsItem2, ChildDetailsItem3, RunningTime } from '../Common/Selector';
+import { General, ProjectDetails, ChildDetails, ChildDetailsItem2, ChildDetailsItem3, RunningTime, CButton2 } from '../Common/Selector';
 
 
 /**
@@ -21,7 +21,19 @@ class Changeover extends Component {
 
                 <ProjectDetails title='Batch Changeover' goBack={goBack}>
 
-                    <ChildDetails />
+                    <ChildDetails>
+
+                        <View style={{flex:1}}>
+
+                        </View>
+
+                        <CButton2 
+                            buttonName='Pause C/O' 
+                            backgroundColor='#FCA800' 
+                            onPressButton2={()=>navigation.navigate('pause')}
+                        />
+
+                    </ChildDetails>
                     
                     <ChildDetails isBorderLeftWidth>
 

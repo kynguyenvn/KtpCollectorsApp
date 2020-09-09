@@ -6,9 +6,9 @@ import { EverythingOkItem } from '../EverythingOk/EverythingOkElements';
 
 // data test
 const data = [
-    {type:'Unplanned D/T'},
-    {type:'Planned D/T'},
-    {type:'Shutdown (Logout)'},
+    {type:'Unplanned D/T', id:1},
+    {type:'Planned D/T', id:3},
+    {type:'Shutdown (Logout)', id:2},
 ]
 
 /**
