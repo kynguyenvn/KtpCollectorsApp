@@ -82,8 +82,10 @@ export default class MainScreen extends Component {
      */
     render(){
 
-        const {navigation} = this.props;
+        const {navigation, route} = this.props;
         const { minute, currentTime } = this.state;
+
+        const page = route.params?route.params.page:0;
 
         return(
             
@@ -92,7 +94,7 @@ export default class MainScreen extends Component {
                 <ScrollableTabView
                     ref={(ref) => { this.scrollableTabView = ref; }}
                     tabBarPosition='top'
-                    initialPage={0}
+                    initialPage={page}
                     locked
                     scrollWithoutAnimation
                     prerenderingSiblingsNumber={3}

@@ -6,11 +6,26 @@ import { EverythingOkItem } from './EverythingOkElements';
 
 // data test
 const data = [
-    {type:'Unplanned D/T'},
-    {type:'Planned D/T'},
-    {type:'Changeover'},
-    {type:'Interruption (eg. Break, Query)'},
-    {type:'Taking Longer'},
+    {
+        id: 1,
+        type:'Unplanned D/T'
+    },
+    {
+        id: 3,
+        type:'Planned D/T'
+    },
+    {
+        id: 2,
+        type:'Changeover'
+    },
+    {
+        id: 4,
+        type:'Interruption (eg. Break, Query)'
+    },
+    {
+        id: 5,
+        type:'Taking Longer'
+    },
 ]
 
 /**
@@ -26,9 +41,27 @@ class EverythingOkScreen extends Component {
 
         this.state = {
 
-            data
-        }
+            data,
+            page: 0
+        };
     }
+
+
+    /**
+     * 
+     */
+    goToPage = () => {
+        this.props.navigation.navigate('main', {page: this.state.page})
+    };
+
+
+    /**
+     * 
+     */
+    handlePageNumber = (id)=> {
+        this.setState({page: id})
+    };
+
 
     render(){
 
@@ -45,6 +78,7 @@ class EverythingOkScreen extends Component {
                 maxHeight={440}
                 goBack={()=>navigation.goBack()}
                 style={{flex:1}}
+                onPressModal={this.goToPage}
             >
                 <View style={{flex:174, paddingHorizontal:30, paddingVertical:20}}>
 
@@ -75,7 +109,7 @@ class EverythingOkScreen extends Component {
 
                     <ScrollView>
                         
-                        <EverythingOkItem data={data} />
+                        <EverythingOkItem data={data} handleId={(id)=>this.handlePageNumber(id)} />
                     
                     </ScrollView>
                 </View>

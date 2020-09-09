@@ -5,7 +5,7 @@ import {View, Text, TouchableOpacity} from 'react-native';
 /**
  * @param data
  */
-const EverythingOkItem = ({data=[], style}) => {
+const EverythingOkItem = ({data=[], style, handleId=()=>{}}) => {
 
     const [categorySelection, setCategorySelection] = useState(false);
 
@@ -14,9 +14,9 @@ const EverythingOkItem = ({data=[], style}) => {
         <View style={{flexDirection:'row', alignItems:'center', marginTop:20}}>
             
             <TouchableOpacity activeOpacity={0.8} onPress={onPressSelect} 
-                style={{width:30, height:30, borderRadius:15, justifyContent:'center', alignItems:'center', backgroundColor:'#FFFFFF', borderWidth:2, borderColor:data[index].type===categorySelection?'#20AD55':'#DBE2E8'}}
+                style={{width:30, height:30, borderRadius:15, justifyContent:'center', alignItems:'center', backgroundColor:'#FFFFFF', borderWidth:2, borderColor:data[index].id===categorySelection?'#20AD55':'#DBE2E8'}}
             >
-                <View style={{width:20, height:20, borderRadius:10, backgroundColor:data[index].type===categorySelection?'#20AD55':'#FFFFFF'}} />
+                <View style={{width:20, height:20, borderRadius:10, backgroundColor:data[index].id===categorySelection?'#20AD55':'#FFFFFF'}} />
         
             </TouchableOpacity>
 
@@ -24,14 +24,15 @@ const EverythingOkItem = ({data=[], style}) => {
 
         </View>);
 
-    const handleCategorySelection = (type) => {
-        setCategorySelection(type);
+    const handleCategorySelection = (id) => {
+        setCategorySelection(id);
+        handleId(id);
     };
 
     return <View style={{flexDirection:'column', paddingBottom:20, ...style}}>
 
-        {data.map((item, id)=>{
-            return <ButtonCategorySelection key={id} index={id} type={item.type} onPressSelect={()=>handleCategorySelection(item.type, id)} />
+        {data.map((item, i)=>{
+            return <ButtonCategorySelection key={i} index={i} id={item.id} type={item.type} onPressSelect={()=>handleCategorySelection(item.id)} />
         })}
 
     </View>

@@ -68,8 +68,10 @@ const ChildDetailsItem2 = ({onPressButton2=()=>{}, label='', buttonName='', back
 
     return <>
 
-        <Text style={{fontSize:26, color:'#3F4246', fontWeight:'300', lineHeight:40, textAlign:'center', marginTop:30}}>{label}</Text>
-
+        <View style={{flex:1, justifyContent:'center'}}>
+            <Text style={{fontSize:26, color:'#3F4246', fontWeight:'300', lineHeight:40, textAlign:'center'}}>{label}</Text>
+        </View>
+        
         <CButton2 
             onPressButton2={onPressButton2}
             buttonName={buttonName}
@@ -93,7 +95,7 @@ const ChildDetailsItem3 = (props) => {
 
     return <>
 
-        <View style={{flexDirection:'row', marginTop:25}}>
+        <View style={{flex:1, flexDirection:'row', alignItems:'center'}}>
             {props.children}
         </View>
 
