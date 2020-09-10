@@ -38,7 +38,7 @@ class PauseUDTAndPDT extends Component {
 
             <Modal 
                 title='Pause changeover'
-                width={400}
+                width={420}
                 isButton
                 goBack={()=>navigation.goBack()}
             >

@@ -23,7 +23,7 @@ class Changeover extends Component {
 
                     <ChildDetails>
 
-                        <View style={{flex:1}}>
+                        <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
 
                         </View>
 

@@ -24,7 +24,13 @@ class UnPlannedDowntime extends Component {
 
                 <ProjectDetails title='Unplanned downtime' goBack={goBack}>
 
-                    <ChildDetails />
+                    <ChildDetails>
+
+                        <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+
+                        </View>
+
+                    </ChildDetails>
                     
                     <ChildDetails isBorderLeftWidth>
 

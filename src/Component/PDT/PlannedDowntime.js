@@ -21,7 +21,13 @@ class PlannedDowntime extends Component {
 
                 <ProjectDetails title='PlannedDowntime' goBack={goBack}>
 
-                    <ChildDetails />
+                    <ChildDetails>
+
+                        <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+
+                        </View>
+
+                    </ChildDetails>
                     
                     <ChildDetails isBorderLeftWidth>
 
