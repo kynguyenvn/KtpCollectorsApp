@@ -9,6 +9,7 @@ import { ReasonCodeScreen } from '../Component/Main/ReasonCodeScreen';
 import { EverythingOkScreen } from '../Component/EverythingOk/EverythingOkScreen';
 import { PauseUDTAndPDT } from '../Component/Changeover/PauseUDTAndPDT';
 import { SelectorBatch } from '../Component/Changeover/SelectorBatch';
+import LinkScreen from '../Component/Account/LinkScreen';
 
 
 
@@ -33,6 +34,7 @@ export default class UNavigation {
           animationEnabled: false,
         }}>
         <Stack.Screen name="login" component={LoginScreen} />
+        <Stack.Screen name="link" component={LinkScreen} />
       </Stack.Navigator>
     );
   };

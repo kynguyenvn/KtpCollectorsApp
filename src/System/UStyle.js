@@ -10,4 +10,7 @@ export default class UStyle {
     static shadowButton = {elevation: 2, shadowOffset: {width: 0, height: 4}, shadowRadius:8, shadowColor: '#296C42', shadowOpacity: 0.2};
     static shadowModal = {elevation: 2, shadowOffset: {width: 0, height: 2}, shadowRadius:16, shadowColor: '#000000', shadowOpacity: 0.3};
 
+    //FOR SCROLL VIEW
+    static behaviorKeyboardAvoidingView = Platform.OS === 'ios' ?{behavior:"padding"}:{behavior:"padding"};
+
 }   

@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Text, View, TouchableOpacity, StatusBar, KeyboardAvoidingView} from 'react-native';
+import React from 'react';
+import {Text, View, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
 import { TextInput, ScrollView } from 'react-native-gesture-handler';
 import { CButton } from '../Common/Selector';
 import R from '../R';
@@ -18,105 +18,96 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
  * 
  * }
  */
-export function LoginScreen() {
+export function LoginScreen(props) {
 
-const [email, setEmail] = React.useState('');
-const [password, setPassword] = React.useState('');
-const {signIn} = React.useContext(AuthContext);
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
+    const {signIn} = React.useContext(AuthContext);
+
+    const {navigation} = props;
 
 
-        return (
+    return (<>
 
-            <>
+        <View style={{flex: 1, flexDirection: 'row'}}>
 
-            <StatusBar hidden />
+            <View style={{flex:482, backgroundColor:'#FFF', flexDirection: 'column'}}>
 
-            <View style={{flex: 1, flexDirection: 'row'}}>
+                <View style={{width:60, height:79, backgroundColor:'#00538B', marginLeft:30, marginTop:30}} />
 
-                <View style={{flex:482, backgroundColor:'#FFF', flexDirection: 'column'}}>
+                <View style={{flex:1, marginLeft:30, justifyContent: 'center'}}>
 
-                    <View style={{width:60, height:79, backgroundColor:'#00538B', marginLeft:30, marginTop:30}} />
+                    <CDataLink label='Data Collector ID' />
 
-                    <View style={{flex:1, marginLeft:30, justifyContent: 'center'}}>
+                    <CDataLink label='Line' isMarginTopLink />
 
-                        <CDataLink label='Data Collector ID' />
+                    <CDataLink label='Line ID' isMarginTopLink />
 
-                        <CDataLink label='Line' isMarginTopLink />
+                    <CDataLink label='Workstation' isMarginTopLink />
 
-                        <CDataLink label='Line ID' isMarginTopLink />
+                    <CDataLink label='Workstation ID' isMarginTopLink />
 
-                        <CDataLink label='Workstation' isMarginTopLink />
+                </View>
 
-                        <CDataLink label='Workstation ID' isMarginTopLink />
+                <View style={{height:84, flexDirection: 'row', alignItems:'center', justifyContent:'space-between', borderTopWidth:1, borderTopColor:'#DBE2E8'}}>
 
-                    </View>
-
-                    <View style={{height:84, flexDirection: 'row', alignItems:'center', justifyContent:'space-between', borderTopWidth:1, borderTopColor:'#DBE2E8'}}>
-
-                        <Text style={{fontSize:16, color:'#00538B', fontWeight:'600', marginLeft:30}}>RELINK DATA COLLECTOR</Text>
+                    <Text style={{fontSize:16, color:'#00538B', fontWeight:'600', marginLeft:30}}>RELINK DATA COLLECTOR</Text>
                         
-                        <TouchableOpacity activeOpacity={0.8} style={{width:56, height:50, marginRight:10, justifyContent:'center', alignItems: 'center'}}>
+                    <TouchableOpacity activeOpacity={0.8} onPress={()=>navigation.navigate('link')} style={{width:56, height:50, marginRight:10, justifyContent:'center', alignItems: 'center'}}>
                             
-                            <Ionicons name='arrow-forward' style={{fontSize:20, color:'#00538B'}} />
+                        <Ionicons name='arrow-forward' style={{fontSize:20, color:'#00538B'}} />
                         
-                        </TouchableOpacity>
-
-                    </View>
+                    </TouchableOpacity>
 
                 </View>
 
-                <View style={{flex:884, backgroundColor:'#00538B', justifyContent:'center', alignItems: 'center'}}>
-
-                  {/* <KeyboardAvoidingView behavior='padding' enabled style={{flex:1}} > */}
-                    
-                      {/* <ScrollView contentContainerStyle={{ alignItems: 'center', backgroundColor:'transparent'}} */}
-                          {/* showsVerticalScrollIndicator={false}> */}
-
-                          {/* <View style={{height:'50%'}} /> */}
-
-                          <View style={{width:484, padding: 50, backgroundColor:'#FFF', borderRadius: 8, ...R.Style.shadow}}>
-
-                              <Text style={{fontSize:13, color:'#2C2C2C', lineHeight:21}}>USER ID</Text>
-
-                              <TextInput 
-                                  style={{height:50, fontSize:16, paddingLeft:15, marginTop:10, borderWidth:1, borderColor:'#DBE2E8', borderRadius:2}} 
-                                  placeholder='Enter...' 
-                                  placeholderTextColor='#6B7B8B' 
-                                  textContentType={'emailAddress'}
-                                  keyboardType={'email-address'}
-                                  returnKeyType={'next'}
-                                  value={email}
-                                  onChangeText={email => setEmail(email)}
-                                  onSubmitEditing={() => { this.passwordTextInput.focus(); }}
-                              />
-
-                              <Text style={{fontSize:13, color:'#2C2C2C', lineHeight:21, marginTop:30}}>PASSWORD</Text>
-
-                              <TextInput 
-                                  ref={(input) => { this.passwordTextInput = input; }}
-                                  style={{height:50, fontSize:16, paddingLeft:15, marginTop:10, borderWidth:1, borderColor:'#DBE2E8', borderRadius:2}} 
-                                  placeholder='&#8226;&#8226;&#8226;&#8226;&#8226;' 
-                                  placeholderTextColor='#6B7B8B'
-                                  textContentType={'password'}
-                                  returnKeyType={'done'}
-                                  value={password}
-                                  onChangeText={password => setPassword(password)} 
-                              />
-
-                              <CButton buttonName='Sign in' onPress={()=>signIn()} />
-
-                          </View>
-
-                      {/* </ScrollView> */}
-                  
-                  {/* </KeyboardAvoidingView> */}
-
-                </View>
-            
             </View>
 
-            </>
-        );
+            <KeyboardAvoidingView {...R.Style.behaviorKeyboardAvoidingView} enabled style={{flex:884, flexDirection:'row', alignItems: 'center', backgroundColor:'#00538B'}} >
+                    
+                <ScrollView contentContainerStyle={{backgroundColor:'transparent', alignItems:'center'}}
+                            showsVerticalScrollIndicator={false}>
+
+                    <View style={{width:484, padding: 50, backgroundColor:'#FFF', borderRadius: 8, ...R.Style.shadow}}>
+
+                        <Text style={{fontSize:13, color:'#2C2C2C', lineHeight:21}}>USER ID</Text>
+
+                        <TextInput 
+                            style={{height:50, fontSize:16, paddingLeft:15, marginTop:10, borderWidth:1, borderColor:'#DBE2E8', borderRadius:2}} 
+                            placeholder='Enter...' 
+                            placeholderTextColor='#6B7B8B' 
+                            textContentType={'emailAddress'}
+                            keyboardType={'email-address'}
+                            returnKeyType={'next'}
+                            value={email}
+                            onChangeText={email => setEmail(email)}
+                            onSubmitEditing={() => { this.passwordTextInput.focus(); }}
+                        />
+
+                        <Text style={{fontSize:13, color:'#2C2C2C', lineHeight:21, marginTop:30}}>PASSWORD</Text>
+
+                        <TextInput 
+                            ref={(input) => { this.passwordTextInput = input; }}
+                            style={{height:50, fontSize:16, paddingLeft:15, marginTop:10, borderWidth:1, borderColor:'#DBE2E8', borderRadius:2}} 
+                            placeholder='&#8226;&#8226;&#8226;&#8226;&#8226;' 
+                            placeholderTextColor='#6B7B8B'
+                            textContentType={'password'}
+                            returnKeyType={'done'}
+                            value={password}
+                            onChangeText={password => setPassword(password)} 
+                        />
+
+                        <CButton buttonName='Sign in' onPress={()=>signIn()} />
+
+                    </View>
+
+                </ScrollView>
+                  
+            </KeyboardAvoidingView>
+            
+        </View>
+
+    </>);
 }
 
 
