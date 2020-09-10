@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {View, Text, TextInput, FlatList} from 'react-native';
+import {View, TextInput, FlatList} from 'react-native';
 import { Modal } from '../Common/Selector';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { SelectorBatchItem } from './ChangeoverElements';
+import { SelectorBatchItem, NameAndComponentDetails } from './ChangeoverElements';
 
 
 // data test
@@ -88,17 +88,11 @@ class SelectorBatch extends Component {
 
                     <View style={{flexDirection:'row', alignItems:'center', backgroundColor:'#F3F5F7', borderTopWidth:1, borderBottomWidth:1, borderColor:'#DBE2E8'}}>
 
-                        <View style={{flex:168}}>
-                            <Text numberOfLines={1} style={{fontSize:16, color:'#3F4246', fontWeight:'600', marginVertical:20, paddingLeft:30}}>Batch Number</Text>
-                        </View>
-                        
-                        <View style={{flex:238, borderLeftWidth:1, borderLeftColor:'#DBE2E8'}}>
-                            <Text numberOfLines={1} style={{fontSize:16, color:'#3F4246', fontWeight:'600', marginVertical:20, paddingLeft:30}}>Part Number</Text>
-                        </View>
-                        
-                        <View style={{flex:419, borderLeftWidth:1, borderLeftColor:'#DBE2E8'}}>
-                            <Text numberOfLines={1} style={{fontSize:16, color:'#3F4246', fontWeight:'600', marginVertical:20, paddingLeft:30}}>Description</Text>
-                        </View>
+                        <NameAndComponentDetails 
+                            batchNumber='Batch Number' 
+                            partNumber='Part Number' 
+                            description='Description'
+                        />
 
                     </View>
 
