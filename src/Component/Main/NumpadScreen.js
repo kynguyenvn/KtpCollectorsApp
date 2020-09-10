@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {View, Text, TouchableOpacity, TextInput} from 'react-native';
 import R from '../R';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { DigitsCard } from './MainElements';
 
 
 
@@ -28,7 +29,9 @@ class NumpadScreen extends Component {
 
         const {number} = this.state;
 
-        const {navigation} = this.props;
+        const {navigation, route} = this.props;
+
+        const title = route.params?route.params.title:'';
 
         return(
 
@@ -52,15 +55,9 @@ class NumpadScreen extends Component {
 
                         <View style={{flex:1, paddingHorizontal:30, paddingTop:30, paddingBottom:50}}>
 
-                            <Text style={{fontSize:30, color:'#3F4246', fontWeight:'700', lineHeight:40, textAlign:'center'}}>GOOD</Text>
+                            <Text style={{fontSize:30, color:'#3F4246', fontWeight:'700', lineHeight:40, textAlign:'center'}}>{title}</Text>
 
-                            <View style={{flexDirection:'row', marginTop:20, height:150}}>
-
-                                <View style={{flex:1, backgroundColor:'#FFF', borderWidth:1, borderColor:'#DBE2E8', borderRadius:3}} />
-                                <View style={{flex:1, backgroundColor:'#FFF', borderWidth:1, borderColor:'#DBE2E8', borderRadius:3, marginLeft:15}} />
-                                <View style={{flex:1, backgroundColor:'#FFF', borderWidth:1, borderColor:'#DBE2E8', borderRadius:3, marginLeft:15}} />
-
-                            </View>
+                            <DigitsCard unitCount={0} isFlex style={{height:150}} />
 
                         </View>
 
