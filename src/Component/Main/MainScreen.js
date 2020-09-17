@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {View} from 'react-native';
 import ScrollableTabView from 'react-native-scrollable-tab-view';
-import moment from 'moment';
 import {TabBar} from '../Common/TabBar';
 import {GoodUnitAndReject} from './GoodUnitAndReject';
 import {UnPlannedDowntime} from '../UPT/UnPlannedDowntime';
@@ -31,9 +30,7 @@ export default class MainScreen extends Component {
     this.state = {
       currentTime: new Date().getTime(),
       minute: new Date().getMinutes(),
-      idleStart: Date.now(),
-      isActive: true,
-      isEverythingOk: false,
+      tab: null,
     };
   }
 
@@ -41,55 +38,17 @@ export default class MainScreen extends Component {
     this.startClockEvents();
   }
 
-  componentDidMount() {
-    this.wasActive = false;
-    if (this.state.isActive) {
-      this.wasActive = true;
-      this.activated();
-    }
-  }
+
   componentWillUnmount() {
-    this.disabled();
     clearTimeout(this.firstMinuteTimeout);
     clearInterval(this.minuteInterval);
+    clearTimeout(this.gotoPage);
   }
 
   componentDidUpdate() {
-    if (this.state.isActive) {
-      if (!this.wasActive) {
-        this.wasActive = true;
-        this.activated();
-      }
-    } else if (this.wasActive) {
-      this.wasActive = false;
-      this.disabled();
-    }
+    const {route} = this.props;
+    const page = route.params ? route.params.page : null;
   }
-
-  activated = () => {
-    if (!this.timer) {
-      this.timer = setInterval(() => this.checkIdle(), 1000);
-      this.setState({idleStart: Date.now()});
-    }
-  };
-
-  disabled = () => {
-    if (this.timer) {
-      clearInterval(this.timer);
-      this.timer = null;
-    }
-  };
-
-  checkIdle = () => {
-    const startTime = moment(this.state.idleStart);
-    const now = moment(Date.now());
-    const diff = now.diff(startTime, 'seconds');
-    const idleTimeout = 50;
-    if (!this.state.isEverythingOk && diff > idleTimeout) {
-      console.log('show everything ok');
-      this.setState({isEverythingOk: true});
-    }
-  };
 
   startClockEvents = () => {
     const secondInMillisecs = 1000;
@@ -121,7 +80,46 @@ export default class MainScreen extends Component {
     /**
      *
      */
-    goToDefault = () => { this.scrollableTabView.goToPage(0);};
+    goToDefault = () => { 
+      this.tabView.goToPage(0);
+    };
+
+
+    /**
+     *
+     */
+    handleChangeScreen = (event) => { 
+      this.setState({tab: event.i})
+    };
+
+    
+    /**
+     *
+     */
+    handleTabChange= (i) => { 
+     let tabBar = Boolean;
+     switch (i) {
+      case 0:
+        tabBar = true;
+        break;
+      case 1:
+        tabBar = false;
+        break;
+      case 2:
+        tabBar = false;
+        break;
+      case 3:
+        tabBar = false;
+        break;
+      case 4:
+        tabBar = false;
+        break;
+      default: 
+        tabBar = false;
+        break;
+    }
+    return tabBar;
+    };
 
 
     /**
@@ -129,23 +127,28 @@ export default class MainScreen extends Component {
      */
     render(){
 
-        const {navigation, route} = this.props;
-        const { minute, currentTime } = this.state;
+        const {navigation} = this.props;
+        const {minute, currentTime, tab} = this.state;
+        const isActive = this.handleTabChange(tab);
 
-        const page = route.params?route.params.page:0;
+
 
         return(
             
             <View style={{flex:1}}>
             
                 <ScrollableTabView
-                    ref={(ref) => { this.scrollableTabView = ref; }}
+                    ref={(tabView) => {
+                    if (tabView !== null) {
+                    this.tabView = tabView
+                    }
+                    }}
                     tabBarPosition='top'
-                    initialPage={page}
+                    initialPage={0}
+                    onChangeTab={this.handleChangeScreen}
                     locked
                     scrollWithoutAnimation
                     prerenderingSiblingsNumber={3}
-
                     renderTabBar={() => <TabBar />}
                 >
 
@@ -153,6 +156,7 @@ export default class MainScreen extends Component {
                         tabLabel={'Default'.toUpperCase()}
                         navigation={navigation}
                         minuteMark={minute} shift={shift} currentTime={currentTime}
+                        isActive={isActive}
                     />
 
                     <UnPlannedDowntime

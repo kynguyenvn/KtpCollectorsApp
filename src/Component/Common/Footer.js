@@ -19,11 +19,18 @@ class Footer extends Component {
         }
     }
 
+     /**
+     * 
+     */
+    componentWillUnmount() {
+        clearInterval(this.countTime)
+    }
+
     /**
      * 
      */
     componentDidMount() {
-        setInterval(() => {
+        this.countTime = setInterval(() => {
             this.setState({
                 date: moment().format('DD MMM, YYYY - h:mm:ss')
             })

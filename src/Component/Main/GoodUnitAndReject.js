@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
+import moment from 'moment';
 import R from '../R';
 import { General } from '../Common/Selector';
 import {Hourly} from '../Common/Hourly';
@@ -13,6 +14,64 @@ import {DigitsCard, GoodUnitAndRejectItem} from './MainElements';
  * state:{}
  */
 class GoodUnitAndReject extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+          idleStart: Date.now(),
+        };
+      }
+    
+      componentDidMount() { 
+        this.wasActive = false;
+        this.active = true;
+        if (this.props.isActive) {
+          this.wasActive = true;
+          this.activated();
+        }
+      }
+      componentWillUnmount() {
+        this.disabled();
+      }
+    
+      componentDidUpdate() {
+        if (this.props.isActive) {
+          if (!this.wasActive) {
+            this.wasActive = true;
+            this.activated();
+          }
+        } else if (this.wasActive) {
+          this.wasActive = false;
+          this.disabled();
+        }
+      }
+    
+      activated = () => {
+        if (!this.timer) {
+          this.timer = setInterval(() => this.checkIdle(), 1000);
+          this.setState({idleStart: Date.now()});
+        }
+      };
+    
+      disabled = () => {
+        if (this.timer) {
+          clearInterval(this.timer);
+          this.timer = null;
+        }
+      };
+    
+      checkIdle = () => {
+        const startTime = moment(this.state.idleStart);
+        const now = moment(Date.now());
+        const diff = now.diff(startTime, 'seconds');
+        const idleTimeout = 30;
+        // console.log('diff', diff);
+        // if (this.props.isActive && diff > idleTimeout) {
+        //   this.props.navigation.navigate('everything');
+        // }
+      };
+    
+
 
     render(){
 
