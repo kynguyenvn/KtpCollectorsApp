@@ -45,11 +45,6 @@ export default class MainScreen extends Component {
     clearTimeout(this.gotoPage);
   }
 
-  componentDidUpdate() {
-    const {route} = this.props;
-    const page = route.params ? route.params.page : null;
-  }
-
   startClockEvents = () => {
     const secondInMillisecs = 1000;
     const minuteInSecs = 60;
@@ -84,6 +79,13 @@ export default class MainScreen extends Component {
       this.tabView.goToPage(0);
     };
 
+    /**
+     *
+     */
+    handleChangeTab = (page) => { 
+      this.tabView.goToPage(page);
+    };
+
 
     /**
      *
@@ -96,7 +98,7 @@ export default class MainScreen extends Component {
     /**
      *
      */
-    handleTabChange= (i) => { 
+    handleCheckTab= (i) => { 
      let tabBar = Boolean;
      switch (i) {
       case 0:
@@ -129,9 +131,7 @@ export default class MainScreen extends Component {
 
         const {navigation} = this.props;
         const {minute, currentTime, tab} = this.state;
-        const isActive = this.handleTabChange(tab);
-
-
+        const isActive = this.handleCheckTab(tab);
 
         return(
             
@@ -157,6 +157,7 @@ export default class MainScreen extends Component {
                         navigation={navigation}
                         minuteMark={minute} shift={shift} currentTime={currentTime}
                         isActive={isActive}
+                        goToPage={this.handleChangeTab}
                     />
 
                     <UnPlannedDowntime

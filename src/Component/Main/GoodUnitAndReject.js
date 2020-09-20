@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View} from 'react-native';
 import moment from 'moment';
 import R from '../R';
 import { General } from '../Common/Selector';
@@ -59,16 +59,21 @@ class GoodUnitAndReject extends Component {
           this.timer = null;
         }
       };
+
+      handleAddUnit = () => {
+        this.setState({ idleStart: Date.now()})
+        R.toast.unitToast('1000 good units added', 3000)
+      }
     
       checkIdle = () => {
         const startTime = moment(this.state.idleStart);
         const now = moment(Date.now());
         const diff = now.diff(startTime, 'seconds');
-        const idleTimeout = 30;
-        // console.log('diff', diff);
-        // if (this.props.isActive && diff > idleTimeout) {
-        //   this.props.navigation.navigate('everything');
-        // }
+        const idleTimeout = 5000;
+        console.log('diff', diff);
+        if (this.props.isActive && diff > idleTimeout) {
+          this.props.navigation.navigate('everything', { goToPage: this.props.goToPage  });
+        }
       };
     
 
@@ -95,7 +100,7 @@ class GoodUnitAndReject extends Component {
                         title='Good' 
                         isButtonNetwork 
                         onPressNumpad={()=>navigation.navigate('numpad', {title:'GOOD'})}
-                        onPress={()=> R.toast.unitToast('1000 good units added', 3000)}
+                        onPress={this.handleAddUnit}
                     >
                         <DigitsCard unitCount={150}/>
 

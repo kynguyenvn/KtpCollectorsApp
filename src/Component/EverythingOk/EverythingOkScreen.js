@@ -51,7 +51,10 @@ class EverythingOkScreen extends Component {
      * 
      */
     goToPage = () => {
-        this.props.navigation.navigate('main', {page: this.state.page})
+        const {route} = this.props;
+        const goToPage = route.params ? route.params.goToPage : null;
+        this.props.navigation.navigate('main')
+        goToPage(this.state.page);
     };
 
 
@@ -67,7 +70,8 @@ class EverythingOkScreen extends Component {
 
         const {data=[]} = this.state;
 
-        const {navigation} = this.props;
+        const {navigation, route} = this.props;
+
 
         return(
 
