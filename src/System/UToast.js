@@ -17,13 +17,16 @@ export default class UToast {
       color: UColor.textCardColor, // text color
       duration: timeout,
       style: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: 56,
-        width: UStyle.deviceWidth/4,
+        justifyContent:'center',
+        alignItems:'center',
+        paddingVertical: 16,
+        marginHorizontal:(UStyle.deviceWidth-229)/2,
+        // maxWidth:249,
+        borderRadius:3,
+        ...UStyle.shadowToast
       },
-      position: {bottom: 10, left: UStyle.deviceWidth/2.5},
-      floating: true,
+      position: {bottom:28},
+      // floating: true,
       titleStyle: {
         fontSize: 16,
       }
