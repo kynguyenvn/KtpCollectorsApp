@@ -1,5 +1,4 @@
 import {Dimensions} from 'react-native';
-import {widthPercentageToDP, heightPercentageToDP} from 'react-native-responsive-screen';
 
 export default class UStyle {
 
@@ -14,10 +13,5 @@ export default class UStyle {
 
     //FOR SCROLL VIEW
     static behaviorKeyboardAvoidingView = Platform.OS === 'ios' ?{behavior:"padding"}:{behavior:"padding"};
-
-
-    //RESPONSIVE FOR DEVICE
-    static wp = widthPercentageToDP;
-    static hp = heightPercentageToDP;
 
 }   
