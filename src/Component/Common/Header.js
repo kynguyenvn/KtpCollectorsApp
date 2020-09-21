@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, TouchableOpacity} from 'react-native';
+import {Text, View, TouchableOpacity, Image} from 'react-native';
 import {useNetInfo} from '@react-native-community/netinfo';
 import R from '../R';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -7,9 +7,11 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 /**
  * props:{}
  */
-export function Header() {
+export function Header(props) {
   
   const netInfo = useNetInfo();
+
+  const {onPressLogout=()=>{}} = props;
   
   return (
     
@@ -23,15 +25,15 @@ export function Header() {
       
       </View>
       
-      <View style={{width:40, height:40, borderRadius: 20, justifyContent:'center', alignItems:'center', backgroundColor: netInfo.isConnected?R.C.successColor2:R.C.rejectColor}}>
+      <View style={{width:40, height:40, borderRadius: 20, justifyContent:'center', alignItems:'center', backgroundColor: netInfo.isConnected?R.C.successColor2:'#FF9F00'}}>
 
-        <Ionicons name='flash' style={{fontSize:20, color:'#FFFFFF'}} />
+        <Ionicons name={netInfo.isConnected?'flash':'server-outline'} style={{fontSize:20, color:'#FFFFFF'}} />
 
       </View>
       
       <Text style={{fontSize:16, color:'#58616A', lineHeight:24, marginLeft:12}}>Connected</Text>
 
-      <UserThumbnail name='Bermie Brown' />
+      <UserThumbnail name='Bermie Brown' onPressLogout={onPressLogout} />
     
     </View>
   
@@ -54,8 +56,9 @@ const DataLink = ({line='', wStation='', PN='', BN=''}) => {
 /**
  * @param name
  * @param backgroundColor
+ * @param onPressLogout
  */
-const UserThumbnail = ({name='', backgroundColor='#00538B'}) => {
+const UserThumbnail = ({name='', avatar='', backgroundColor='#00538B', onPressLogout=()=>{}}) => {
 
   const size = 40;
 
@@ -68,8 +71,10 @@ const UserThumbnail = ({name='', backgroundColor='#00538B'}) => {
       <Text style={{fontSize:16, color:'#FFFFFF', fontWeight:'500'}}>{name?name.substr(0,2).toUpperCase():''}</Text>
 
     </View>
+
+    {avatar!==''?<Image style={{height:size, width:size, borderRadius:borderRadius, marginTop: -size}} source={{uri: avatar}}/>:null}
     
-    <TouchableOpacity activeOpacity={0.8} style={{height:40, flexDirection:'row', alignItems:'center'}}>
+    <TouchableOpacity activeOpacity={0.8} onPress={onPressLogout} style={{height:40, flexDirection:'row', alignItems:'center'}}>
     
       <Text style={{fontSize:16, color:'#58616A', lineHeight:24, marginLeft:12}}>{name}</Text>
 

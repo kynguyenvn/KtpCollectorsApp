@@ -10,6 +10,7 @@ import { EverythingOkScreen } from '../Component/EverythingOk/EverythingOkScreen
 import { PauseUDTAndPDT } from '../Component/Changeover/PauseUDTAndPDT';
 import { SelectorBatch } from '../Component/Changeover/SelectorBatch';
 import LinkScreen from '../Component/Account/LinkScreen';
+import { LogoutScreen } from '../Component/Account/LogoutScreen';
 
 
 
@@ -79,7 +80,7 @@ export default class UNavigation {
             headerStyle: {
               backgroundColor:'#F3F5F7'
             },
-            header: (props) => <Header {...props} />,
+            header: (props) => <Header onPressLogout={()=>props.navigation.navigate('logout')} {...props} />,
           }}
         />
         <Stack.Screen
@@ -89,7 +90,7 @@ export default class UNavigation {
             headerStyle: {
               backgroundColor:'#F3F5F7'
             },
-            header: (props) => <Header {...props} />,
+            header: (props) => <Header onPressLogout={()=>props.navigation.navigate('logout')} {...props} />,
           }}
         />
         <Stack.Screen
@@ -99,7 +100,7 @@ export default class UNavigation {
             headerStyle: {
               backgroundColor:'#F3F5F7'
             },
-            header: (props) => <Header {...props} />,
+            header: (props) => <Header onPressLogout={()=>props.navigation.navigate('logout')} {...props} />,
           }}
         />
         <Stack.Screen
@@ -109,7 +110,7 @@ export default class UNavigation {
             headerStyle: {
               backgroundColor:'#F3F5F7'
             },
-            header: (props) => <Header {...props} />,
+            header: (props) => <Header onPressLogout={()=>props.navigation.navigate('logout')} {...props} />,
           }}
         />
         <Stack.Screen
@@ -119,7 +120,7 @@ export default class UNavigation {
             headerStyle: {
               backgroundColor:'#F3F5F7'
             },
-            header: (props) => <Header {...props} />,
+            header: (props) => <Header onPressLogout={()=>props.navigation.navigate('logout')} {...props} />,
           }}
         />
         <Stack.Screen
@@ -129,7 +130,17 @@ export default class UNavigation {
             headerStyle: {
               backgroundColor:'#F3F5F7'
             },
-            header: (props) => <Header {...props} />,
+            header: (props) => <Header onPressLogout={()=>props.navigation.navigate('logout')} {...props} />,
+          }}
+        />
+        <Stack.Screen
+          name="logout"
+          component={LogoutScreen}
+          options={{
+            headerShown:false,
+            headerStyle: {
+              backgroundColor:'#F3F5F7'
+            },
           }}
         />
       </Stack.Navigator>
